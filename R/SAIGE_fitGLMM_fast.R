@@ -410,9 +410,11 @@ glmmkin.ai_PCG_Rcpp_Binary = function(genofile, fit0, tau=c(0,0), fixtau = c(0,0
 	coef.alpha = alpha
 	}
 	if(!is.null(inC)){
-          glmmResult$LOCOResult[[j]] = list(isLOCO = TRUE, coefficients=coef.alpha, linear.predictors=eta, fitted.values=mu, Y=Y, residuals=res, cov=cov, Lambda0 = Lambda0)
+	  obj.noK=ScoreTest_NULL_Model_survival(mu, y, X)
+          glmmResult$LOCOResult[[j]] = list(isLOCO = TRUE, coefficients=coef.alpha, linear.predictors=eta, fitted.values=mu, Y=Y, residuals=res, cov=cov, Lambda0 = Lambda0, obj.noK = obj.noK)
 	}else{
-	  glmmResult$LOCOResult[[j]] = list(isLOCO = TRUE, coefficients=coef.alpha, linear.predictors=eta, fitted.values=mu, Y=Y, residuals=res, cov=cov)
+          obj.noK=ScoreTest_NULL_Model_binary(mu, y, X)		   
+	  glmmResult$LOCOResult[[j]] = list(isLOCO = TRUE, coefficients=coef.alpha, linear.predictors=eta, fitted.values=mu, Y=Y, residuals=res, cov=cov, obj.noK = obj.noK)
 
 	}
       }else{
@@ -1587,7 +1589,19 @@ scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait = function(obj.glmm.null,
          if (CHR < 1 | CHR > 22){
            indexInMarkerList = indexInMarkerList + 1
          }else{
+	  isLOCO = FALSE
+	  if(obj.glmm.null$LOCO){
+                if(obj.glmm.null$LOCOResult[[CHR]]$isLOCO){
+                        isLOCO = TRUE
+			obj.noK = obj.glmm.null$LOCOResult[[CHR]]$obj.noK
+                }
+          }
+
+	 if(!isLOCO){obj.noK = obj.glmm.null$obj.noK} 
+
+
           AF = AC/(2*Nnomissing)
+
 	  if(is.null(obj.glmm.null$eventTime)){
           	G = G0  -  obj.noK$XXVX_inv %*%  (obj.noK$XV %*% G0) # G1 is X adjusted
 	  }else{
@@ -2643,3 +2657,17 @@ checkPerfectSep<-function(formula, data, minCovariateCount){
   return(colnamesDelete)
 }
 
+
+ScoreTest_NULL_Model = function(mu, mu2, y, X){
+  V = as.vector(mu2)
+  res = as.vector(y - mu)
+  XV = t(X * V)
+  XVX = t(X) %*% (t(XV))
+  XVX_inv = solve(XVX)
+  XXVX_inv = X %*% XVX_inv
+  XVX_inv_XV = XXVX_inv * V
+  S_a =  colSums(X * res)
+  re = list(XV = XV, XVX = XVX, XXVX_inv = XXVX_inv, XVX_inv = XVX_inv, S_a = S_a, XVX_inv_XV = XVX_inv_XV, V = V)
+  class(re) = "SA_NULL"
+  return(re)
+}
