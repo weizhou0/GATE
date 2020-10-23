@@ -358,9 +358,10 @@ public:
                 arma::fvec * temp = &m_OneSNP_StdGeno;
 		Msub_MAFge_minMAFtoConstructGRM = 0;	
                 // Not yet calculated
-                if(size(m_DiagStd)[0] != Nnomissing){
+                if(size(m_DiagStd)[0] == Nnomissing){
                         m_DiagStd.zeros(Nnomissing);
                         for(size_t i=0; i< M; i++){
+				//cout << "i " << i << " alleleFreqVec[i] " << endl;
 				if(i < startIndex || i > endIndex){
 					if(alleleFreqVec[i] >= minMAFtoConstructGRM && alleleFreqVec[i] <= 1-minMAFtoConstructGRM){
                                   Get_OneSNP_StdGeno(i, temp);
@@ -1622,14 +1623,16 @@ arma::fvec getDiagOfSigma_LOCO(arma::fvec& wVec, arma::fvec& tauVec){
 
         int Nnomissing = geno.getNnomissing();
         int Msub = geno.getMsub();
-
         //cout << "N=" << N << endl;
         arma::fvec diagVec(Nnomissing);
         float diagElement;
         float floatBuffer;
         //float minvElement;
-	int Msub_MAFge_minMAFtoConstructGRM = geno.getMsub_MAFge_minMAFtoConstructGRM_in();
-        diagVec = tauVec(1)* (*geno.Get_Diagof_StdGeno_LOCO()) /(Msub_MAFge_minMAFtoConstructGRM) + tauVec(0)/wVec;
+        diagVec = tauVec(1)* (*geno.Get_Diagof_StdGeno_LOCO());
+        int Msub_MAFge_minMAFtoConstructGRM = geno.getMsub_MAFge_minMAFtoConstructGRM_in();
+    cout << "Msub_MAFge_minMAFtoConstructGRM " << Msub_MAFge_minMAFtoConstructGRM << endl ;
+        diagVec = diagVec/(Msub_MAFge_minMAFtoConstructGRM) + tauVec(0)/wVec;
+        //diagVec = tauVec(1)* (*geno.Get_Diagof_StdGeno_LOCO()) /(Msub_MAFge_minMAFtoConstructGRM) + tauVec(0)/wVec;
         for(unsigned int i=0; i< Nnomissing; i++){
                 if(diagVec(i) < 1e-4){
                         diagVec(i) = 1e-4 ;
@@ -4640,21 +4643,29 @@ arma::fvec getPCG1ofSigmaAndVector_LOCO(arma::fvec& wVec,  arma::fvec& tauVec, a
     		iter = iter + 1;
     		arma::fcolvec ApVec = getCrossprod_LOCO(pVec, wVec, tauVec);
     		arma::fvec preA = (rVec.t() * zVec)/(pVec.t() * ApVec);
-
+			
     		float a = preA(0);
-    
+   		//cout << "a " << a << endl;
+	        arma::fvec pAp = pVec.t() * ApVec;	
+   		//cout << "pVec.t() * ApVec " << pAp(0) << endl; 
     		xVec = xVec + a * pVec;
-    
     		r1Vec = rVec - a * ApVec;
 
     		z1Vec = minvVec % r1Vec;
     		arma::fvec Prebet = (z1Vec.t() * r1Vec)/(zVec.t() * rVec);
+   	//	for(int i = 0; i < 10; i++){
+          //      cout << "xVec[i]: " << xVec[i] << endl;
+            //    cout << "ApVec[i]: " << ApVec[i] << endl;
+              //  cout << "zVec[i]: " << zVec[i] << endl;
+                //cout << "rVec[i]: " << rVec[i] << endl;
+        //} 
     		float bet = Prebet(0);
     		pVec = z1Vec+ bet*pVec;
     		zVec = z1Vec;
     		rVec = r1Vec;
     
     		sumr2 = sum(rVec % rVec);
+                //cout << "sumr2 " << sumr2 << endl;
   	}
   
   	if (iter >= maxiterPCG){

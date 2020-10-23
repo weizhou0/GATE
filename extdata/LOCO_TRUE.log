@@ -1,0 +1,6127 @@
+R version 3.6.3 (2020-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 18.04.4 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas/libblas.so.3
+LAPACK: /usr/lib/x86_64-linux-gnu/libopenblasp-r0.2.20.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] optparse_1.6.0 SAIGE_0.40.1  
+
+loaded via a namespace (and not attached):
+[1] compiler_3.6.3     Matrix_1.2-14      Rcpp_1.0.0         getopt_1.20.2     
+[5] grid_3.6.3         RcppParallel_4.4.1 lattice_0.20-41   
+$plinkFile
+[1] "./input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new"
+
+$phenoFile
+[1] "./input/pheno_1000samples_survival.txt"
+
+$phenoCol
+[1] "casecontrol"
+
+$traitType
+[1] "survival"
+
+$eventTimeCol
+[1] "AgeOfEventFinal"
+
+$eventTimeBinSize
+[1] 1
+
+$pcgforUhatforSurvAnalysis
+[1] FALSE
+
+$invNormalize
+[1] FALSE
+
+$covarColList
+[1] "X"
+
+$sampleIDColinphenoFile
+[1] "IND_ID"
+
+$tol
+[1] 0.02
+
+$maxiter
+[1] 20
+
+$tolPCG
+[1] 1e-05
+
+$maxiterPCG
+[1] 500
+
+$nThreads
+[1] 60
+
+$SPAcutoff
+[1] 2
+
+$numRandomMarkerforVarianceRatio
+[1] 1000
+
+$skipModelFitting
+[1] FALSE
+
+$memoryChunk
+[1] 2
+
+$tauInit
+[1] "1,0"
+
+$LOCO
+[1] TRUE
+
+$traceCVcutoff
+[1] 0.0025
+
+$ratioCVcutoff
+[1] 0.001
+
+$outputPrefix
+[1] "./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE"
+
+$IsSparseKin
+[1] FALSE
+
+$sparseGRMFile
+[1] ""
+
+$sparseGRMSampleIDFile
+[1] ""
+
+$numRandomMarkerforSparseKin
+[1] 2000
+
+$isCateVarianceRatio
+[1] FALSE
+
+$relatednessCutoff
+[1] 0.125
+
+$cateVarRatioMinMACVecExclude
+[1] "0.5,1.5,2.5,3.5,4.5,5.5,10.5,20.5"
+
+$cateVarRatioMaxMACVecInclude
+[1] "1.5,2.5,3.5,4.5,5.5,10.5,20.5"
+
+$isCovariateTransform
+[1] TRUE
+
+$isDiagofKinSetAsOne
+[1] FALSE
+
+$useSparseSigmaConditionerforPCG
+[1] FALSE
+
+$useSparseSigmaforInitTau
+[1] FALSE
+
+$minMAFforGRM
+[1] 0.1
+
+$minCovariateCount
+[1] -1
+
+$useSparseGRMtoFitNULL
+[1] FALSE
+
+$help
+[1] FALSE
+
+tauInit  is  1 0 
+cateVarRatioMinMACVecExclude  is  0.5 1.5 2.5 3.5 4.5 5.5 10.5 20.5 
+cateVarRatioMaxMACVecInclude  is  1.5 2.5 3.5 4.5 5.5 10.5 20.5 
+[1] 1 0
+Markers in the Plink file with MAF >=  0.1  will be used to construct GRM
+60  threads are set to be used  
+Fitted null model will be output to  ./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE.rda 
+Variance ratio(s) will be output to  ./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE.varianceRatio.txt 
+WARNING: The variance ratio file  ./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE.varianceRatio.txt  already exists. The new variance ratios will be output to  ./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE.varianceRatio.txt . In order to avoid over-writting, please remove the  ./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE.varianceRatio.txt  or use the argument outputPrefix_varRatio to specify a different prefix to output the variance ratio(s)
+leave-one-chromosome-out is activated! Note this option will only be applied to autosomal variants
+chromosomeStartIndexVec:  0 5858 11716 17574 23432 29290 35148 41006 46864 52722 58580 64438 70296 76154 82012 87870 93728 99586 105444 111302 117160 123018 
+chromosomeEndIndexVec:  5857 11715 17573 23431 29289 35147 41005 46863 52721 58579 64437 70295 76153 82011 87869 93727 99585 105443 111301 117159 123017 128867 
+1000  samples have genotypes
+eventTimeBinSize is specified, so event time will be grouped by bins with size  1 
+formula is  casecontrol~X 
+1000  samples have non-missing phenotypes
+1000  samples will be used for analysis
+qr transformation has been performed on covariates
+[1] "data.new"
+    X1          X2
+1    1 -1.54992823
+113  0  0.44553114
+224  0 -0.07180992
+335  0 -0.83129611
+446  0 -0.67519515
+557  0 -1.81225485
+colnames(data.new) is  Y X 
+out.transform$Param.transform$qrr:  1 1 
+casecontrol  is a binary trait
+Survival analysis will be performed
+Y ~ X
+<environment: 0x557aa8f1c408>
+glm:
+
+Call:  glm(formula = formula.new, family = binomial, data = data.new)
+
+Coefficients:
+(Intercept)            X  
+    -1.4069      -0.8796  
+
+Degrees of Freedom: 999 Total (i.e. Null);  998 Residual
+Null Deviance:	    1069 
+Residual Deviance: 955.5 	AIC: 959.5
+Start fitting the NULL GLMM
+   user  system elapsed 
+  0.963   0.136   1.494 
+[1] "Start reading genotype plink file here"
+nbyte: 250
+nbyte: 250
+reserve: 32474736
+
+M: 128868, N: 1000
+size of genoVecofPointers: 1
+setgeno mark1
+setgeno mark2
+38333 markers with MAF >= 0.1 are used for GRM.
+setgeno mark5
+setgeno mark6
+time: 1472.6
+[1] "Genotype reading is done"
+inital tau is  1 0 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+Tau:
+[1] 1 0
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.2036746
+iGet_Coef:  2 
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+Tau:
+[1] 1 0
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8313345
+iGet_Coef:  3 
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+Tau:
+[1] 1 0
+Fixed-effect coefficients:
+          [,1]
+[1,] -0.846737
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+Variance component estimates:
+[1] 1 0
+
+Iteration  1 1 0 :
+tau0_v1:  1 0 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+Tau:
+[1] 1 0
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.2036746
+iGet_Coef:  2 
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+Tau:
+[1] 1 0
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8313345
+iGet_Coef:  3 
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+Tau:
+[1] 1 0
+Fixed-effect coefficients:
+          [,1]
+[1,] -0.846737
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+iter from getPCG1ofSigmaAndVector 1
+[1] 0.0000000 0.8359813
+tau:  1 0.1019373 
+tau0:  1 0 
+
+Iteration  2 1 0.1019373 :
+tau0_v1:  1 0.1019373 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+Tau:
+[1] 1.0000000 0.1019373
+Fixed-effect coefficients:
+         [,1]
+[1,] -0.87649
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+[1] 0.0000000 0.1173469
+tau:  1 0.1317009 
+tau0:  1 0.1019373 
+
+Iteration  3 1 0.1317009 :
+tau0_v1:  1 0.1317009 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1317009
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8818884
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+[1] 0.00000000 0.09458035
+tau:  1 0.1613052 
+tau0:  1 0.1317009 
+
+Iteration  4 1 0.1613052 :
+tau0_v1:  1 0.1613052 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1613052
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8868883
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+[1] 0.00000000 0.03870409
+tau:  1 0.1750995 
+tau0:  1 0.1613052 
+
+Iteration  5 1 0.1750995 :
+tau0_v1:  1 0.1750995 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1750995
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8891248
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+[1] 0.00000000 0.02401956
+tau:  1 0.1842103 
+tau0:  1 0.1750995 
+
+Iteration  6 1 0.1842103 :
+tau0_v1:  1 0.1842103 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1842103
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8906088
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+[1] 0.00000000 0.01245371
+tau:  1 0.1891086 
+tau0:  1 0.1842103 
+
+Final  1 0.1891086 :
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8914296
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 0
+[1] 5857
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36650
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36650
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8901266
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 5858
+[1] 11715
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36626
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36626
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900453
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 11716
+[1] 17573
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36781
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36781
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8901407
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 17574
+[1] 23431
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36524
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36524
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900993
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 23432
+[1] 29289
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36507
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36507
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900363
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 29290
+[1] 35147
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36600
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36600
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8902429
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 35148
+[1] 41005
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36753
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36753
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+         [,1]
+[1,] -0.89015
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 41006
+[1] 46863
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36575
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36575
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8901356
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 46864
+[1] 52721
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36546
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36546
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8902628
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 52722
+[1] 58579
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36627
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36627
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8899047
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 58580
+[1] 64437
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36619
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36619
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900031
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 64438
+[1] 70295
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36480
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36480
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8895748
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 70296
+[1] 76153
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36696
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36696
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8899875
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 76154
+[1] 82011
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36554
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36554
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900589
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 82012
+[1] 87869
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36428
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36428
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8899033
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 87870
+[1] 93727
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36610
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36610
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8899459
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 93728
+[1] 99585
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36568
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36568
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900865
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 99586
+[1] 105443
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36585
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36585
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900476
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 105444
+[1] 111301
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36609
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36609
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8902155
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 111302
+[1] 117159
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36512
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36512
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900272
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 117160
+[1] 123017
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36470
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36470
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+          [,1]
+[1,] -0.889859
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+[1] 123018
+[1] 128867
+iGet_Coef:  1 
+Msub_MAFge_minMAFtoConstructGRM 36673
+iter from getPCG1ofSigmaAndVector 4
+Msub_MAFge_minMAFtoConstructGRM 36673
+iter from getPCG1ofSigmaAndVector 4
+Tau:
+[1] 1.0000000 0.1891086
+Fixed-effect coefficients:
+           [,1]
+[1,] -0.8900508
+[1] "OK"
+dim(X1):  1000 1 
+length(V):  1000 
+   user  system elapsed 
+157.588   0.876   9.184 
+t_end - t_begin, fitting the NULL model took
+   user  system elapsed 
+156.625   0.740   7.690 
+Start estimating variance ratios
+
+Family: binomial 
+Link function: logit 
+
+[1] FALSE
+dim(Rmat):  1000 154 
+dim(sqrtWinvN):  1000 1000 
+dim(sqrtWinvNR):  1000 154 
+dim(Dinv):  154 154 
+dim(RNWNR):  154 154 
+dim(ACm):  154 154 
+dim(WinvN):  1000 1000 
+dim(Rmat):  1000 154 
+dim(WinvNRt):  1000 154 
+dim(ACinv):  154 154 
+Only one variance ratio will be estimated using randomly selected markers with MAC >= 20
+[1] "HERE6"
+iter from getPCG1ofSigmaAndVector 6
+81310 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.2341003 
+111416 th marker
+G0 0 1 0 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1645957 
+37839 th marker
+G0 1 1 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1440349 
+44248 th marker
+G0 2 0 1 1 2 1 2 1 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1163927 
+111799 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2312099 
+70674 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.153081 
+44844 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2138866 
+90717 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2060099 
+128241 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1805729 
+24347 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1987645 
+[1] "OK"
+[1] "OK1"
+111467 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1843799 
+12435 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1712978 
+101559 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2041476 
+107454 th marker
+G0 0 1 1 1 0 1 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1709658 
+60569 th marker
+G0 0 1 0 1 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1581355 
+75866 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1389489 
+44558 th marker
+G0 2 0 1 1 1 1 1 2 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.09652534 
+14763 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1845105 
+105100 th marker
+G0 1 2 2 2 0 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 130
+var1 is  0.09961183 
+116280 th marker
+G0 0 1 1 0 1 1 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 130
+var1 is  0.1264998 
+[1] "OK"
+[1] "OK1"
+106706 th marker
+G0 0 0 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1684134 
+3008 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2054015 
+65323 th marker
+G0 1 1 0 2 2 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.106744 
+92338 th marker
+G0 1 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.2025249 
+73469 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1766708 
+35435 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2010272 
+18300 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1809267 
+39608 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1775135 
+89691 th marker
+G0 1 1 2 0 0 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1186187 
+78222 th marker
+G0 1 0 1 1 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1151854 
+[1] "OK"
+[1] "OK1"
+64816 th marker
+G0 1 1 2 2 0 1 1 1 1 2 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1182634 
+119556 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1687612 
+12185 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2135869 
+41021 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1605559 
+115944 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1968745 
+60896 th marker
+G0 0 1 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 131
+var1 is  0.1245506 
+61416 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1973108 
+42758 th marker
+G0 0 1 1 1 0 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1991648 
+85954 th marker
+G0 0 0 0 0 1 1 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.167103 
+32764 th marker
+G0 1 1 1 1 1 2 2 2 1 2 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1133817 
+[1] "OK"
+[1] "OK1"
+72856 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1866698 
+75088 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1880174 
+24549 th marker
+G0 1 0 0 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1723373 
+121558 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1851965 
+110113 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2032945 
+63269 th marker
+G0 0 1 1 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1726555 
+74818 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1840896 
+62970 th marker
+G0 0 1 1 1 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1716963 
+37852 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1904583 
+27274 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1825594 
+[1] "OK"
+[1] "OK1"
+123024 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2125482 
+19874 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1824874 
+47099 th marker
+G0 1 0 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1517289 
+57412 th marker
+G0 1 1 0 1 1 1 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1078337 
+13376 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2623742 
+124538 th marker
+G0 0 1 1 1 1 1 1 2 0 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1417811 
+57250 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.2100454 
+106679 th marker
+G0 1 0 1 1 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1819214 
+79156 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.267957 
+88675 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1744335 
+[1] "OK"
+[1] "OK1"
+124079 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1796194 
+38421 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1642271 
+98747 th marker
+G0 1 0 1 1 2 0 2 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1020491 
+8878 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2005537 
+103450 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.1814545 
+18155 th marker
+G0 1 0 0 1 1 0 1 0 0 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1639141 
+121026 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2178053 
+67336 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1900186 
+99874 th marker
+G0 1 0 0 1 2 1 1 1 0 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.09894525 
+36566 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.185756 
+[1] "OK"
+[1] "OK1"
+41251 th marker
+G0 2 0 1 1 1 1 2 1 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.125327 
+75852 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1748093 
+76729 th marker
+G0 1 0 0 1 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1845648 
+95891 th marker
+G0 0 1 1 0 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2194705 
+122926 th marker
+G0 0 1 1 1 0 0 0 1 0 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1661602 
+64407 th marker
+G0 1 1 2 1 1 1 1 2 0 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.09724195 
+6151 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1874205 
+114330 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1550612 
+89889 th marker
+G0 1 0 1 1 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.14504 
+22896 th marker
+G0 0 1 1 0 1 0 2 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1685651 
+[1] "OK"
+[1] "OK1"
+99727 th marker
+G0 0 0 0 0 1 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1410665 
+93916 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1877822 
+6036 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 72
+var1 is  0.1390228 
+116592 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1877645 
+14516 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1891279 
+62379 th marker
+G0 0 1 1 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2303658 
+107837 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1664771 
+126042 th marker
+G0 0 2 1 1 1 2 1 0 1 2 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1124091 
+81423 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1859316 
+71968 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1658433 
+[1] "OK"
+[1] "OK1"
+86217 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1762204 
+69721 th marker
+G0 1 1 0 1 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1694513 
+97513 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1638157 
+60768 th marker
+G0 1 0 0 1 0 1 0 0 2 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.2039224 
+61505 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.2097397 
+1003 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1666886 
+8493 th marker
+G0 0 0 0 0 2 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1125454 
+31410 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1799293 
+121238 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 77
+var1 is  0.121103 
+44274 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2146702 
+[1] "OK"
+[1] "OK1"
+119750 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1985165 
+114793 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.1750909 
+57143 th marker
+G0 0 2 1 1 2 1 2 1 1 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1224139 
+69790 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.2087649 
+75367 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1641072 
+112221 th marker
+G0 1 0 1 1 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1170941 
+15298 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.197527 
+40784 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1251559 
+21457 th marker
+G0 1 0 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.2535601 
+113059 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1543097 
+[1] "OK"
+[1] "OK1"
+94263 th marker
+G0 1 0 1 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1897855 
+63036 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2033185 
+77249 th marker
+G0 0 1 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.174608 
+53309 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2292254 
+91172 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1980944 
+94030 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1788363 
+95646 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1655467 
+36138 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1924943 
+48163 th marker
+G0 0 1 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1658074 
+107965 th marker
+G0 2 0 1 1 0 1 1 0 0 1 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1724493 
+[1] "OK"
+[1] "OK1"
+15568 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.1572332 
+51415 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1994735 
+47227 th marker
+G0 1 1 0 0 2 2 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1162731 
+86391 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 84
+var1 is  0.1527005 
+68967 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1904762 
+39241 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1704454 
+30510 th marker
+G0 2 1 2 1 1 1 1 2 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1046468 
+123311 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1923534 
+60062 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2145213 
+8054 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1904928 
+[1] "OK"
+[1] "OK1"
+24167 th marker
+G0 0 1 1 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1527813 
+99265 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1803619 
+110606 th marker
+G0 1 1 1 2 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1263083 
+124616 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.2110541 
+83836 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.2854916 
+81413 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1623568 
+106457 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1708199 
+87397 th marker
+G0 1 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1244081 
+20514 th marker
+G0 0 0 0 0 1 1 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1468452 
+19914 th marker
+G0 0 2 1 1 0 1 1 0 2 1 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1005123 
+[1] "OK"
+[1] "OK1"
+105291 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1690371 
+77441 th marker
+G0 1 2 2 2 2 0 2 2 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1066016 
+36898 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1595309 
+110709 th marker
+G0 2 1 1 1 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1197149 
+2161 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.1972391 
+51591 th marker
+G0 2 1 1 1 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1750167 
+52505 th marker
+G0 1 1 0 1 1 2 1 0 2 2 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1046392 
+10203 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1899662 
+15574 th marker
+G0 1 0 1 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1094386 
+9979 th marker
+G0 0 2 1 1 2 2 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1259034 
+[1] "OK"
+[1] "OK1"
+101859 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1555781 
+85796 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1829146 
+116776 th marker
+G0 1 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.09518481 
+91876 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 75
+var1 is  0.1599102 
+19073 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2351723 
+95683 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1930204 
+62122 th marker
+G0 0 0 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1586119 
+45834 th marker
+G0 2 0 1 1 0 0 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1669649 
+30377 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.166888 
+58690 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.182287 
+[1] "OK"
+[1] "OK1"
+105948 th marker
+G0 1 1 1 1 1 1 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.09402168 
+27402 th marker
+G0 0 0 0 0 1 1 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1032315 
+102870 th marker
+G0 0 1 0 1 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1719309 
+76349 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1820016 
+121520 th marker
+G0 1 1 2 1 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.10156 
+26398 th marker
+G0 1 0 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1627033 
+102514 th marker
+G0 0 2 1 1 0 1 0 0 2 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1302485 
+53902 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.2878769 
+57203 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.156634 
+77898 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1761267 
+[1] "OK"
+[1] "OK1"
+73306 th marker
+G0 0 2 1 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1175573 
+59313 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1874104 
+53735 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.2218172 
+15751 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1814544 
+74958 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2319148 
+16870 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.135429 
+116979 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2084881 
+101261 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1828567 
+32497 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2127212 
+25923 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.2192841 
+[1] "OK"
+[1] "OK1"
+45036 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2265649 
+37790 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1625319 
+51689 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1393953 
+107597 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2097129 
+19612 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.2054289 
+97242 th marker
+G0 0 1 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.2305358 
+33385 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 77
+var1 is  0.1583481 
+36677 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.207008 
+124278 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1826063 
+41272 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2135138 
+[1] "OK"
+[1] "OK1"
+77983 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1623731 
+103648 th marker
+G0 1 1 2 0 1 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1223771 
+8293 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2221631 
+88869 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.2210978 
+30147 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.2090423 
+86566 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1709492 
+88834 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1925279 
+63 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2178462 
+4353 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1909334 
+40693 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1606748 
+[1] "OK"
+[1] "OK1"
+98341 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.172115 
+94475 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1536187 
+59180 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.2072507 
+80116 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2285688 
+56882 th marker
+G0 1 0 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2002665 
+30646 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1710433 
+100081 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1903569 
+2908 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1721296 
+102802 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1299802 
+93177 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1609776 
+[1] "OK"
+[1] "OK1"
+1536 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2051312 
+47983 th marker
+G0 1 1 1 1 1 0 1 2 1 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1283904 
+17487 th marker
+G0 1 0 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.229099 
+36735 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1469987 
+93344 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 85
+var1 is  0.1709679 
+37661 th marker
+G0 1 2 1 1 1 1 0 1 0 2 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1026254 
+21312 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1176603 
+88442 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2134525 
+5564 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.215725 
+54653 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1922916 
+[1] "OK"
+[1] "OK1"
+93227 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1993743 
+113444 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1539575 
+115571 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1782864 
+89578 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1761323 
+35745 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1681132 
+37462 th marker
+G0 0 0 0 0 1 1 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.122251 
+74272 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.2280084 
+98437 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.165884 
+10044 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1897201 
+118921 th marker
+G0 0 2 1 1 0 1 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1406407 
+[1] "OK"
+[1] "OK1"
+30971 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1699155 
+77948 th marker
+G0 1 0 0 1 0 1 0 0 2 2 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1121284 
+71612 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1947905 
+91027 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2185447 
+8523 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1779875 
+114234 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.2350152 
+48976 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.2407394 
+60057 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.198576 
+87784 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1843732 
+55716 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1935871 
+[1] "OK"
+[1] "OK1"
+61269 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1762048 
+66618 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.2600541 
+47074 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2154217 
+20729 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.2046148 
+124850 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2043036 
+59392 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.2037106 
+30423 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.212066 
+103683 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1962108 
+18079 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1871193 
+62679 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.172652 
+[1] "OK"
+[1] "OK1"
+95245 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2025104 
+81933 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1873011 
+44284 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1846272 
+35802 th marker
+G0 0 0 0 0 1 2 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1437259 
+125391 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1587734 
+117572 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1719139 
+65816 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1859292 
+16184 th marker
+G0 0 0 0 0 1 2 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1122975 
+46149 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1195385 
+71619 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.2508776 
+[1] "OK"
+[1] "OK1"
+57314 th marker
+G0 2 2 2 2 2 2 2 2 2 2 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1095891 
+98490 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1559788 
+51077 th marker
+G0 1 0 0 1 1 2 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1069259 
+49976 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 83
+var1 is  0.1713119 
+16437 th marker
+G0 1 1 2 1 2 0 2 2 1 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1093459 
+23414 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1580027 
+15806 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1885993 
+54539 th marker
+G0 1 2 1 1 1 1 1 1 0 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.09860384 
+104655 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1854776 
+47930 th marker
+G0 1 0 0 0 1 1 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1767818 
+[1] "OK"
+[1] "OK1"
+71506 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1408326 
+77771 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1618032 
+29830 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.155394 
+54986 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1976013 
+41378 th marker
+G0 0 1 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1511798 
+113260 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2181339 
+62503 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1794238 
+10300 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1951188 
+2089 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1792701 
+51569 th marker
+G0 0 1 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1734042 
+[1] "OK"
+[1] "OK1"
+1423 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2197632 
+55585 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1977388 
+3940 th marker
+G0 0 1 1 1 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2243066 
+107715 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1631784 
+122413 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1880179 
+4209 th marker
+G0 1 1 2 0 1 0 2 2 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1140779 
+62334 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1565608 
+44161 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1704764 
+43069 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1866938 
+57101 th marker
+G0 1 0 1 1 0 1 1 1 2 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1048855 
+[1] "OK"
+[1] "OK1"
+68704 th marker
+G0 0 1 0 1 1 0 1 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.09910881 
+61027 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1738119 
+46102 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 73
+var1 is  0.1325554 
+61767 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2077389 
+86524 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2030326 
+93591 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1852001 
+2928 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1776169 
+98909 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1985371 
+9736 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1869636 
+70534 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 76
+var1 is  0.1321571 
+[1] "OK"
+[1] "OK1"
+21797 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1860034 
+42779 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2031861 
+11413 th marker
+G0 0 1 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.145918 
+102825 th marker
+G0 0 1 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1701658 
+55280 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.2171188 
+1782 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2605685 
+14750 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1963469 
+112923 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1750258 
+50065 th marker
+G0 0 0 0 0 1 2 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1036344 
+103818 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2119017 
+[1] "OK"
+[1] "OK1"
+42377 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2244551 
+33386 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1724866 
+60071 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.09527012 
+57399 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 80
+var1 is  0.1586898 
+75763 th marker
+G0 2 1 2 1 0 0 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1150494 
+74972 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.255486 
+106331 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1837638 
+117520 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2220638 
+62474 th marker
+G0 1 1 1 1 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.112928 
+31400 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1614567 
+[1] "OK"
+[1] "OK1"
+9922 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1764246 
+96741 th marker
+G0 0 1 1 1 0 1 1 0 1 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1698305 
+58771 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1735707 
+10236 th marker
+G0 2 0 1 1 0 0 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.09886896 
+119620 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1919984 
+42865 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2420173 
+86915 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1671904 
+74717 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2066067 
+71017 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1830968 
+120332 th marker
+G0 1 1 1 2 1 0 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1164671 
+[1] "OK"
+[1] "OK1"
+38416 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1870946 
+107379 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1997069 
+36985 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1903334 
+47519 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1492869 
+8975 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.166992 
+69431 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2053084 
+68980 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.1583311 
+85777 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.2237857 
+73093 th marker
+G0 0 0 0 0 1 1 0 1 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1690463 
+68974 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 76
+var1 is  0.1477649 
+[1] "OK"
+[1] "OK1"
+114367 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1857537 
+127144 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1996125 
+128741 th marker
+G0 0 0 0 0 1 1 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1164735 
+31173 th marker
+G0 0 1 1 0 1 1 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1536143 
+114071 th marker
+G0 0 1 1 1 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1682396 
+18364 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2335184 
+91332 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1710909 
+75405 th marker
+G0 1 0 0 1 1 1 1 1 2 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1427535 
+100724 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1852996 
+88238 th marker
+G0 1 0 1 0 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.158205 
+[1] "OK"
+[1] "OK1"
+94367 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1550097 
+40880 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1839117 
+101014 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2030723 
+32922 th marker
+G0 1 1 1 2 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.09355121 
+28110 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1859456 
+67131 th marker
+G0 0 1 1 0 0 1 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1651456 
+17694 th marker
+G0 1 0 1 1 0 1 1 0 2 2 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.2187767 
+84857 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.2029285 
+125378 th marker
+G0 2 2 2 2 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1292442 
+6488 th marker
+G0 0 1 1 0 1 1 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.100047 
+[1] "OK"
+[1] "OK1"
+126068 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1757827 
+9452 th marker
+G0 1 0 1 1 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.194873 
+127581 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1908284 
+24996 th marker
+G0 1 1 0 1 1 1 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1176414 
+17068 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 74
+var1 is  0.1246719 
+100602 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1397818 
+12781 th marker
+G0 1 1 1 1 1 2 0 0 2 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1073964 
+23862 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2630522 
+89063 th marker
+G0 1 0 1 1 0 0 0 1 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.102988 
+83259 th marker
+G0 1 0 1 0 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2081023 
+[1] "OK"
+[1] "OK1"
+79797 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.3026949 
+81730 th marker
+G0 1 2 2 1 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1174834 
+6316 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1567903 
+42632 th marker
+G0 0 0 0 0 1 1 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1936025 
+111276 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1971478 
+76531 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1538518 
+86475 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1859318 
+65266 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2092303 
+109068 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1776564 
+56356 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2044451 
+[1] "OK"
+[1] "OK1"
+70200 th marker
+G0 0 1 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1874126 
+18349 th marker
+G0 0 1 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.124968 
+115858 th marker
+G0 0 1 1 1 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1337199 
+33850 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1705669 
+101789 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1846538 
+122904 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1672111 
+27476 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.2003363 
+93597 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1731314 
+101395 th marker
+G0 0 1 0 1 2 0 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1277886 
+85537 th marker
+G0 0 1 1 1 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1681449 
+[1] "OK"
+[1] "OK1"
+84097 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1827478 
+11177 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1479998 
+20070 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1409253 
+98703 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1538774 
+99342 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2031009 
+121998 th marker
+G0 1 1 1 2 1 0 1 2 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1047267 
+106542 th marker
+G0 1 1 2 1 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2004396 
+40021 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2202788 
+32471 th marker
+G0 1 0 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1431888 
+103290 th marker
+G0 0 1 0 1 0 2 0 0 2 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1184144 
+[1] "OK"
+[1] "OK1"
+15972 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.172288 
+90182 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1848765 
+47327 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.2104268 
+60474 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2347799 
+56458 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1905863 
+44005 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1836743 
+53308 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1789466 
+27826 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.2216048 
+12118 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2295502 
+65919 th marker
+G0 1 1 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.108458 
+[1] "OK"
+[1] "OK1"
+45997 th marker
+G0 0 1 1 1 2 2 2 1 2 2 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1082174 
+99689 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.1671711 
+48126 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1707064 
+16691 th marker
+G0 1 0 1 1 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1542091 
+29017 th marker
+G0 1 0 1 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1917868 
+45194 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.2196055 
+54975 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2121807 
+20168 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1524968 
+103961 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1883992 
+116651 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.1863651 
+[1] "OK"
+[1] "OK1"
+108225 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1970303 
+103191 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1801357 
+98620 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1681126 
+120959 th marker
+G0 2 1 1 2 2 2 1 1 2 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.09868959 
+50823 th marker
+G0 0 1 1 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1708311 
+72275 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2067623 
+12348 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.2315641 
+19880 th marker
+G0 1 1 0 1 1 1 1 1 1 2 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.13089 
+125260 th marker
+G0 0 1 1 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1695595 
+25993 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1842355 
+[1] "OK"
+[1] "OK1"
+32462 th marker
+G0 0 1 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.2130646 
+19210 th marker
+G0 0 1 0 1 1 1 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 130
+var1 is  0.1167828 
+109842 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1854074 
+109546 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2071132 
+97870 th marker
+G0 1 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1619496 
+15803 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1426761 
+26958 th marker
+G0 1 1 1 1 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1513012 
+1387 th marker
+G0 0 1 1 1 2 0 1 2 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1334258 
+108767 th marker
+G0 1 1 0 2 0 1 0 0 1 2 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1593645 
+10281 th marker
+G0 1 1 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1114693 
+[1] "OK"
+[1] "OK1"
+102291 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.20495 
+90115 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1767344 
+40938 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2245813 
+22887 th marker
+G0 0 0 0 0 1 1 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.0965296 
+64451 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1787209 
+41803 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1849836 
+58374 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1757589 
+128845 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.216651 
+127753 th marker
+G0 1 0 1 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1100619 
+30080 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1718621 
+[1] "OK"
+[1] "OK1"
+92257 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 81
+var1 is  0.120035 
+89179 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2260335 
+29402 th marker
+G0 1 2 1 1 0 2 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 130
+var1 is  0.1027402 
+96428 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 77
+var1 is  0.1567651 
+29692 th marker
+G0 2 1 1 2 0 1 1 0 2 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1557098 
+55355 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2019197 
+26876 th marker
+G0 1 0 1 1 0 1 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1525236 
+69 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 82
+var1 is  0.1621854 
+59166 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.183129 
+78665 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1760723 
+[1] "OK"
+[1] "OK1"
+82020 th marker
+G0 1 2 2 2 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1250656 
+126956 th marker
+G0 1 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1053296 
+102094 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.2458993 
+24701 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 74
+var1 is  0.09133453 
+18015 th marker
+G0 1 1 1 0 0 2 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1017856 
+121306 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2017232 
+82875 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 83
+var1 is  0.1922595 
+23160 th marker
+G0 0 0 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1515337 
+3455 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1560538 
+110975 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2164374 
+[1] "OK"
+[1] "OK1"
+55060 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1770249 
+4743 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.2065193 
+105123 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1637038 
+11021 th marker
+G0 1 2 1 2 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1063716 
+31721 th marker
+G0 1 1 2 0 0 1 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1246229 
+122746 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1309545 
+104451 th marker
+G0 0 1 1 0 1 1 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1117757 
+89041 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1846088 
+77306 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1811563 
+78353 th marker
+G0 0 1 0 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1788308 
+[1] "OK"
+[1] "OK1"
+115639 th marker
+G0 2 1 2 1 0 2 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1181508 
+108434 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1986785 
+125824 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1704376 
+31469 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2040532 
+57398 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.09643368 
+48279 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 76
+var1 is  0.1610751 
+90449 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.198969 
+125466 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.2136827 
+82033 th marker
+G0 0 1 1 1 1 1 1 1 2 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1789871 
+107612 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1879463 
+[1] "OK"
+[1] "OK1"
+125731 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.178805 
+27286 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1581324 
+38401 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2129276 
+96305 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1718436 
+117184 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1760907 
+45288 th marker
+G0 0 1 0 0 1 1 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1133457 
+11403 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1709981 
+115141 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.208053 
+46520 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1855945 
+6427 th marker
+G0 1 0 1 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.2189809 
+[1] "OK"
+[1] "OK1"
+72460 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.2280761 
+102451 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2085216 
+14627 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1888955 
+24233 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1723309 
+10894 th marker
+G0 0 1 1 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2399307 
+13131 th marker
+G0 0 1 1 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2007938 
+42356 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2223531 
+84268 th marker
+G0 1 0 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1579302 
+81572 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2146382 
+44996 th marker
+G0 1 0 1 1 1 1 1 1 2 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1477665 
+[1] "OK"
+[1] "OK1"
+117542 th marker
+G0 1 0 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2031427 
+107044 th marker
+G0 0 1 1 1 1 1 1 0 1 2 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1068759 
+98644 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2086491 
+91075 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1945134 
+36781 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2210903 
+94731 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 67
+var1 is  0.1109457 
+124793 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1610957 
+115158 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2178376 
+49720 th marker
+G0 0 1 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1772461 
+107992 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1854959 
+[1] "OK"
+[1] "OK1"
+65712 th marker
+G0 1 0 1 1 0 0 0 1 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1647433 
+63996 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1797486 
+114186 th marker
+G0 0 1 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1628426 
+96073 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.2014873 
+59144 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1649622 
+74184 th marker
+G0 2 2 2 2 1 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1001672 
+128536 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 77
+var1 is  0.1647105 
+30483 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1975687 
+16222 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.190627 
+68558 th marker
+G0 0 1 1 0 1 1 1 2 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1376518 
+[1] "OK"
+[1] "OK1"
+83437 th marker
+G0 0 1 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1895401 
+117087 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1990342 
+41039 th marker
+G0 0 1 1 1 0 1 0 0 2 2 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1557121 
+19944 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1557394 
+89758 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1743791 
+71935 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2203205 
+105391 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 81
+var1 is  0.2225061 
+78300 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1936696 
+121168 th marker
+G0 1 1 1 0 2 1 2 2 1 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1050436 
+44549 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1796827 
+[1] "OK"
+[1] "OK1"
+23395 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1793605 
+33347 th marker
+G0 1 0 1 1 0 0 1 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1721236 
+27984 th marker
+G0 0 1 1 1 1 1 1 2 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1062646 
+8498 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.171851 
+110015 th marker
+G0 0 2 1 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1503922 
+83016 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.2050759 
+40129 th marker
+G0 0 1 1 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1871759 
+116117 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2357304 
+93743 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1704801 
+69235 th marker
+G0 2 1 2 2 2 1 2 2 2 2 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 130
+var1 is  0.112721 
+[1] "OK"
+[1] "OK1"
+128344 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 84
+var1 is  0.1747699 
+28133 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2124695 
+27124 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 78
+var1 is  0.1592215 
+82563 th marker
+G0 1 2 1 2 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1237385 
+120602 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 84
+var1 is  0.1762471 
+4426 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.1911896 
+30651 th marker
+G0 0 1 0 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1690816 
+90501 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.179165 
+88228 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2137579 
+64536 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.2413303 
+[1] "OK"
+[1] "OK1"
+16579 th marker
+G0 0 1 0 1 1 1 0 1 0 2 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.122078 
+59853 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2490562 
+120839 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1766437 
+12548 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2009287 
+64331 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2175257 
+28182 th marker
+G0 1 0 1 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1073788 
+81068 th marker
+G0 1 0 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1908895 
+62903 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.2051738 
+27644 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1855466 
+7166 th marker
+G0 2 2 2 2 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1484753 
+[1] "OK"
+[1] "OK1"
+41064 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2486918 
+81404 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1650829 
+117228 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2169125 
+100382 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1932635 
+112344 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2360716 
+123037 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1881269 
+15605 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.2081209 
+91832 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2276121 
+62922 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2110476 
+7472 th marker
+G0 1 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1784033 
+[1] "OK"
+[1] "OK1"
+124884 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2281141 
+102102 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1845034 
+78322 th marker
+G0 0 1 1 0 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.16384 
+86842 th marker
+G0 0 1 1 1 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1647426 
+118177 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1787852 
+94801 th marker
+G0 0 1 0 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.1525871 
+31109 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1931681 
+75637 th marker
+G0 2 1 1 2 1 2 1 1 2 2 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1210451 
+843 th marker
+G0 0 0 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1492302 
+78049 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.2039287 
+[1] "OK"
+[1] "OK1"
+88312 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2295259 
+79635 th marker
+G0 1 0 0 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.185617 
+24782 th marker
+G0 1 1 0 2 1 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1162417 
+38033 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1810659 
+123492 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1601859 
+21919 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.2015101 
+76571 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1747255 
+59005 th marker
+G0 0 2 1 1 0 0 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1660231 
+64075 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.2061829 
+115950 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2042149 
+[1] "OK"
+[1] "OK1"
+88377 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1751274 
+124032 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1704366 
+85368 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 75
+var1 is  0.157752 
+86672 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1626856 
+91579 th marker
+G0 1 0 1 1 1 1 0 1 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1507572 
+116417 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1943319 
+123381 th marker
+G0 0 1 1 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1803006 
+70366 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1531701 
+119936 th marker
+G0 1 0 0 0 2 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.09704071 
+6839 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.171661 
+[1] "OK"
+[1] "OK1"
+60853 th marker
+G0 1 0 1 1 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1621053 
+56391 th marker
+G0 2 1 2 2 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1843305 
+57672 th marker
+G0 1 0 1 1 0 0 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1521749 
+62214 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1808903 
+16858 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.2151705 
+107873 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1614458 
+125135 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1948738 
+69513 th marker
+G0 1 0 1 0 2 0 2 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1088508 
+55322 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1817773 
+118475 th marker
+G0 1 0 1 1 0 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1170427 
+[1] "OK"
+[1] "OK1"
+48350 th marker
+G0 1 0 1 1 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.244082 
+87613 th marker
+G0 0 0 0 0 1 2 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.155107 
+90653 th marker
+G0 1 0 1 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2040365 
+1508 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2325647 
+125735 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1835548 
+123705 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2396908 
+92367 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2138926 
+36121 th marker
+G0 1 0 1 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1786331 
+53710 th marker
+G0 1 1 1 1 0 0 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.126581 
+95762 th marker
+G0 0 1 1 0 1 1 2 1 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1399921 
+[1] "OK"
+[1] "OK1"
+107911 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1587284 
+25461 th marker
+G0 1 0 1 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.2077512 
+68682 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2703259 
+68447 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.1598853 
+39777 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.2709685 
+56941 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1802792 
+111662 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2077743 
+59232 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1653806 
+82149 th marker
+G0 1 0 1 1 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1579233 
+85761 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.2284425 
+[1] "OK"
+[1] "OK1"
+62090 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.2199349 
+58272 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1583638 
+11306 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2796637 
+20045 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1846755 
+90137 th marker
+G0 0 1 1 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1155447 
+11167 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2069221 
+115081 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.237783 
+53621 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1713767 
+67500 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2478197 
+53967 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.2298975 
+[1] "OK"
+[1] "OK1"
+10737 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1782507 
+40773 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1276634 
+75516 th marker
+G0 1 1 0 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1787858 
+39436 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.166053 
+64835 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.2274384 
+90790 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.192698 
+98946 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1920859 
+46626 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.27339 
+73443 th marker
+G0 0 1 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.2232265 
+71596 th marker
+G0 1 0 0 1 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1667639 
+[1] "OK"
+[1] "OK1"
+98707 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1601367 
+119548 th marker
+G0 2 2 2 2 1 1 1 2 1 2 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1040237 
+31945 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1739023 
+34987 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 66
+var1 is  0.1025481 
+19701 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2178567 
+125157 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1864177 
+128864 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1653912 
+125813 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1882194 
+88921 th marker
+G0 0 2 1 1 1 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1304431 
+110982 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1626664 
+[1] "OK"
+[1] "OK1"
+81295 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1675904 
+45434 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.2131367 
+56509 th marker
+G0 2 1 2 1 2 0 2 2 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1075743 
+82646 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.3297982 
+24600 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1842357 
+29593 th marker
+G0 1 0 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1753226 
+7285 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.175228 
+18689 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1626135 
+91776 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.1496377 
+30729 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1577721 
+[1] "OK"
+[1] "OK1"
+65013 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1935289 
+71565 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2173905 
+14848 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.161864 
+110978 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1915958 
+51002 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1600343 
+67272 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1677095 
+67596 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1638401 
+91019 th marker
+G0 1 1 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1492909 
+50925 th marker
+G0 1 2 2 1 1 0 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1653684 
+110230 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2392604 
+[1] "OK"
+[1] "OK1"
+106715 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1821402 
+106002 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1937945 
+53566 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1832119 
+105094 th marker
+G0 0 1 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1913111 
+97283 th marker
+G0 1 0 1 0 1 0 2 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.3210854 
+106301 th marker
+G0 1 0 1 1 2 1 2 2 0 1 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1291437 
+63164 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1922895 
+126713 th marker
+G0 1 0 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1542957 
+76419 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1854073 
+69007 th marker
+G0 1 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1119742 
+[1] "OK"
+[1] "OK1"
+32978 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1676061 
+28874 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1535384 
+68686 th marker
+G0 2 0 1 1 0 1 1 1 2 2 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1227726 
+59806 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1883744 
+61532 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1963823 
+24766 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2020189 
+56292 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1760501 
+97668 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.151847 
+127905 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1803486 
+76265 th marker
+G0 0 1 1 1 0 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.2197677 
+[1] "OK"
+[1] "OK1"
+47848 th marker
+G0 1 1 2 2 2 1 2 2 2 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1084473 
+93345 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2047107 
+51896 th marker
+G0 0 1 0 1 1 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1034105 
+49770 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1839946 
+90561 th marker
+G0 1 2 2 2 1 0 1 2 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1508069 
+34331 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.2167568 
+58703 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1595014 
+92635 th marker
+G0 0 1 0 1 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1720566 
+124465 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2526465 
+12451 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1658007 
+[1] "OK"
+[1] "OK1"
+25925 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.17321 
+66029 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1272524 
+88063 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.1764626 
+43916 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2144048 
+122544 th marker
+G0 0 1 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1714423 
+44821 th marker
+G0 1 1 0 2 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1959514 
+87819 th marker
+G0 0 1 0 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.191297 
+17927 th marker
+G0 0 2 1 1 1 0 1 2 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1713955 
+45900 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 72
+var1 is  0.1439597 
+24175 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1927602 
+[1] "OK"
+[1] "OK1"
+90413 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1932291 
+79490 th marker
+G0 0 1 0 1 0 1 0 0 2 2 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1944316 
+116144 th marker
+G0 1 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1864483 
+46268 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.2052885 
+63567 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2162011 
+29031 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1649254 
+42256 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1846411 
+41102 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2047529 
+12125 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.1604619 
+125671 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1632878 
+[1] "OK"
+[1] "OK1"
+60753 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1615213 
+31078 th marker
+G0 1 0 0 0 0 2 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.09673878 
+71849 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2056622 
+76517 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1852882 
+62359 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2626816 
+47235 th marker
+G0 1 2 1 2 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.08958646 
+53998 th marker
+G0 0 1 1 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1493451 
+1491 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.2316727 
+17255 th marker
+G0 0 1 0 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1882202 
+56203 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.167891 
+[1] "OK"
+[1] "OK1"
+72580 th marker
+G0 0 0 0 0 2 1 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1434812 
+31754 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.2056981 
+12530 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.183759 
+15319 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1376775 
+66454 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.2159868 
+52608 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1658883 
+120025 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1373217 
+2072 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 82
+var1 is  0.1491622 
+119506 th marker
+G0 1 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1369811 
+104531 th marker
+G0 1 0 0 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.2076885 
+[1] "OK"
+[1] "OK1"
+46892 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 84
+var1 is  0.1679442 
+73679 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1734808 
+17294 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.164747 
+115430 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2477373 
+120844 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.2130355 
+97204 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1794376 
+92014 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.183549 
+74663 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1834122 
+90922 th marker
+G0 0 2 1 1 0 0 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1700912 
+91981 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1980146 
+[1] "OK"
+[1] "OK1"
+80413 th marker
+G0 0 1 0 1 0 1 0 0 1 2 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.173605 
+124723 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.2199587 
+56539 th marker
+G0 1 1 1 1 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1146457 
+86098 th marker
+G0 0 1 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.1856216 
+39871 th marker
+G0 1 0 0 1 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 123
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1923912 
+114595 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.167098 
+67573 th marker
+G0 0 2 1 1 1 2 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1134118 
+49159 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.2599889 
+86235 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2011904 
+113783 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1824282 
+[1] "OK"
+[1] "OK1"
+83944 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1791646 
+89811 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.2015827 
+32731 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1652086 
+127026 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1760292 
+67566 th marker
+G0 1 0 1 0 0 1 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1836783 
+61852 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1686924 
+114892 th marker
+G0 1 2 1 2 1 0 2 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 130
+var1 is  0.1083384 
+43641 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.2188508 
+87328 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 86
+var1 is  0.1783221 
+3476 th marker
+G0 0 1 1 1 0 0 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.178144 
+[1] "OK"
+[1] "OK1"
+22807 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 71
+var1 is  0.1684693 
+34303 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1940141 
+69408 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2025488 
+115692 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2198156 
+28977 th marker
+G0 1 1 2 1 0 2 1 1 2 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1442566 
+91245 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.198946 
+15581 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 81
+var1 is  0.12919 
+85138 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1926341 
+74321 th marker
+G0 0 0 0 0 1 1 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1102008 
+67603 th marker
+G0 2 0 1 1 0 0 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1164368 
+[1] "OK"
+[1] "OK1"
+69010 th marker
+G0 1 1 1 1 0 0 1 0 0 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1927552 
+9433 th marker
+G0 0 2 1 1 1 1 0 2 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1110612 
+72462 th marker
+G0 2 1 2 1 1 0 2 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1033847 
+99001 th marker
+G0 0 0 0 0 2 2 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1069525 
+86569 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1058148 
+104823 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2090465 
+2004 th marker
+G0 0 1 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1048261 
+89491 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1865164 
+96349 th marker
+G0 1 1 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1063504 
+91142 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.207816 
+[1] "OK"
+[1] "OK1"
+55174 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.2354225 
+31250 th marker
+G0 0 0 0 0 1 1 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1781451 
+1606 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 85
+var1 is  0.1405431 
+9082 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1738244 
+55107 th marker
+G0 0 1 0 1 1 0 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1816816 
+17481 th marker
+G0 1 1 1 1 2 2 2 1 1 2 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1078454 
+80034 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 103
+var1 is  0.193595 
+119589 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 78
+var1 is  0.1524534 
+86946 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 83
+var1 is  0.1406988 
+111681 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1654336 
+[1] "OK"
+[1] "OK1"
+86965 th marker
+G0 2 0 1 1 1 1 1 1 1 2 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1033715 
+70622 th marker
+G0 0 2 1 1 0 0 0 1 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1155675 
+121852 th marker
+G0 0 1 1 0 2 0 1 2 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1153982 
+53171 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.17205 
+106151 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 80
+var1 is  0.1402709 
+125806 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1675279 
+68603 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1860768 
+122068 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2145066 
+11268 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.2269165 
+26020 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1846206 
+[1] "OK"
+[1] "OK1"
+18168 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2102049 
+8079 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1262697 
+22909 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2002572 
+61462 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.2087282 
+53079 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.192135 
+56161 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1854384 
+80602 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1787124 
+87263 th marker
+G0 1 0 1 1 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1241199 
+42814 th marker
+G0 1 0 1 1 0 1 1 0 2 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1742461 
+128125 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1867167 
+[1] "OK"
+[1] "OK1"
+92748 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.18353 
+112826 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.2304402 
+26874 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.163798 
+3386 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1396626 
+2605 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1790803 
+125313 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1653089 
+31548 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2248261 
+17030 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1963284 
+10126 th marker
+G0 0 0 0 0 1 1 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1188091 
+26067 th marker
+G0 0 1 1 1 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1803237 
+[1] "OK"
+[1] "OK1"
+98269 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1940842 
+76425 th marker
+G0 1 1 2 0 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1613883 
+78473 th marker
+G0 0 0 0 0 1 1 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1138447 
+73499 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1512722 
+47041 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1317781 
+6585 th marker
+G0 0 1 1 0 0 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1630358 
+46081 th marker
+G0 0 1 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.2043087 
+61915 th marker
+G0 0 1 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.194504 
+101959 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 115
+var1 is  0.1700393 
+8080 th marker
+G0 2 0 1 1 1 2 2 0 2 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 127
+var1 is  0.1225507 
+[1] "OK"
+[1] "OK1"
+123797 th marker
+G0 1 0 0 0 1 1 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1223627 
+85404 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.2330709 
+112929 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 89
+var1 is  0.1897753 
+118622 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1315368 
+76398 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1682049 
+112324 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1834754 
+10797 th marker
+G0 1 2 1 1 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1474392 
+1583 th marker
+G0 0 1 0 1 0 0 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.164197 
+81278 th marker
+G0 0 1 1 0 0 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.2064656 
+50416 th marker
+G0 0 1 1 1 1 0 0 2 0 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1462657 
+[1] "OK"
+[1] "OK1"
+89030 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 78
+var1 is  0.1640888 
+26725 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 93
+var1 is  0.215496 
+65862 th marker
+G0 0 0 0 0 1 1 0 1 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1850895 
+59792 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1847239 
+102632 th marker
+G0 1 1 1 1 1 0 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.1732373 
+103974 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1870752 
+32602 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1737658 
+85539 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2098091 
+47674 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.1951464 
+54832 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1980869 
+[1] "OK"
+[1] "OK1"
+2316 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2145688 
+45727 th marker
+G0 0 1 1 1 1 1 1 1 2 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1234001 
+13843 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 88
+var1 is  0.1564067 
+33860 th marker
+G0 1 1 1 0 1 0 2 2 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 125
+var1 is  0.1372278 
+42199 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1399997 
+82497 th marker
+G0 1 1 1 1 2 1 2 2 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.09045945 
+76702 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1824304 
+105539 th marker
+G0 0 0 0 0 1 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1830289 
+76826 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1837848 
+37374 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1746924 
+[1] "OK"
+[1] "OK1"
+117337 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 78
+var1 is  0.1682076 
+65619 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1743815 
+125076 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.1634366 
+8451 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.1815685 
+98566 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.1927124 
+72229 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 100
+var1 is  0.1807192 
+76342 th marker
+G0 2 2 2 2 1 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.09974393 
+22371 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.1830351 
+32278 th marker
+G0 2 1 2 1 1 1 2 1 2 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1005841 
+6973 th marker
+G0 1 1 0 2 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1244163 
+[1] "OK"
+[1] "OK1"
+32075 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.1797465 
+18589 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.184294 
+51539 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.2162154 
+109006 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.1492025 
+81992 th marker
+G0 0 1 1 1 0 1 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1310747 
+113242 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 109
+var1 is  0.1770411 
+52406 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 119
+var1 is  0.1703316 
+9831 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2378558 
+86203 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 106
+var1 is  0.2234454 
+125000 th marker
+G0 1 0 0 1 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.174653 
+[1] "OK"
+[1] "OK1"
+28035 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 131
+iter from getPCG1ofSigmaAndVector 99
+var1 is  0.215307 
+84734 th marker
+G0 0 1 1 1 0 0 1 1 0 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1774438 
+14200 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1084702 
+82582 th marker
+G0 1 1 1 1 0 0 1 0 0 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 129
+var1 is  0.1082715 
+66916 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2208056 
+110529 th marker
+G0 1 2 1 1 1 1 1 1 2 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1085375 
+83081 th marker
+G0 0 0 0 0 0 1 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 132
+iter from getPCG1ofSigmaAndVector 112
+var1 is  0.2092306 
+56346 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1520839 
+17228 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.1659688 
+66196 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2151332 
+[1] "OK"
+[1] "OK1"
+90699 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 95
+var1 is  0.176604 
+4253 th marker
+G0 1 1 1 1 0 1 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 123
+var1 is  0.09895913 
+106670 th marker
+G0 1 1 1 2 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1397638 
+50016 th marker
+G0 0 1 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1703535 
+34642 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.2036404 
+119757 th marker
+G0 0 0 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1821571 
+52415 th marker
+G0 0 1 0 1 1 0 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1863414 
+55986 th marker
+G0 1 1 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1404143 
+17244 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1957573 
+108498 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2097125 
+[1] "OK"
+[1] "OK1"
+88319 th marker
+G0 1 0 0 0 2 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.09725588 
+15656 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 90
+var1 is  0.1558422 
+124481 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 83
+var1 is  0.1684731 
+30497 th marker
+G0 1 0 1 0 0 1 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1368972 
+109328 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.236947 
+75120 th marker
+G0 0 0 0 0 1 2 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1781554 
+21581 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1674088 
+70114 th marker
+G0 0 2 1 1 0 0 1 0 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1373897 
+31326 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.232549 
+17224 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1861062 
+[1] "OK"
+[1] "OK1"
+43956 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.2480789 
+35722 th marker
+G0 1 1 1 1 1 0 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1079751 
+345 th marker
+G0 0 0 0 0 2 2 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1037489 
+113121 th marker
+G0 1 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 108
+var1 is  0.1892452 
+50409 th marker
+G0 1 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.1842024 
+87651 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.1956138 
+43314 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 76
+var1 is  0.1271475 
+93573 th marker
+G0 2 0 1 1 0 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2189133 
+7380 th marker
+G0 0 1 0 1 1 0 1 1 1 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.118535 
+29822 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.1785164 
+[1] "OK"
+[1] "OK1"
+31519 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 84
+var1 is  0.158592 
+33868 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1979595 
+86987 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1829043 
+61880 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.2183239 
+19788 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1744355 
+101902 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1608933 
+84122 th marker
+G0 2 0 1 1 0 1 0 1 0 2 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1076172 
+112186 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.2772193 
+47499 th marker
+G0 0 1 1 1 0 2 1 1 2 1 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1075366 
+124113 th marker
+G0 0 1 0 0 1 1 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 128
+var1 is  0.1074789 
+[1] "OK"
+[1] "OK1"
+18028 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.2020362 
+58127 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 97
+var1 is  0.2038113 
+21647 th marker
+G0 0 1 1 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 113
+var1 is  0.1614245 
+124213 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.1980351 
+112542 th marker
+G0 1 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1668059 
+55031 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1956323 
+33754 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.191267 
+27793 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.213292 
+113245 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2268122 
+35129 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2202224 
+[1] "OK"
+[1] "OK1"
+127133 th marker
+G0 1 1 0 1 0 2 0 0 1 2 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 126
+var1 is  0.1025045 
+103795 th marker
+G0 0 1 1 1 1 0 0 1 1 1 
+iter from getPCG1ofSigmaAndVector 129
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1612556 
+117845 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 85
+var1 is  0.1472075 
+57485 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 125
+iter from getPCG1ofSigmaAndVector 116
+var1 is  0.1907024 
+40739 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 110
+var1 is  0.2577307 
+64824 th marker
+G0 1 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 111
+var1 is  0.1993379 
+90894 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.183575 
+40744 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 118
+var1 is  0.1786126 
+108985 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.2188073 
+84037 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 98
+var1 is  0.1808552 
+[1] "OK"
+[1] "OK1"
+69278 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.195032 
+17310 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.2040717 
+116405 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2448163 
+66006 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1517259 
+101992 th marker
+G0 0 0 0 0 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 96
+var1 is  0.1526216 
+27090 th marker
+G0 1 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 94
+var1 is  0.2100849 
+92814 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 107
+var1 is  0.2126001 
+120773 th marker
+G0 1 1 2 1 0 1 1 1 2 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 120
+var1 is  0.1558646 
+49076 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 124
+iter from getPCG1ofSigmaAndVector 91
+var1 is  0.1789827 
+39031 th marker
+G0 0 0 0 0 1 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 122
+var1 is  0.1679993 
+[1] "OK"
+[1] "OK1"
+115828 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 87
+var1 is  0.162091 
+3719 th marker
+G0 1 0 0 1 1 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 124
+var1 is  0.1731869 
+17985 th marker
+G0 0 0 0 0 0 1 0 0 1 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 114
+var1 is  0.1950719 
+70021 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 117
+var1 is  0.1951176 
+89272 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 128
+iter from getPCG1ofSigmaAndVector 102
+var1 is  0.2244763 
+63169 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 104
+var1 is  0.1577058 
+127766 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 126
+iter from getPCG1ofSigmaAndVector 101
+var1 is  0.203244 
+30716 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 92
+var1 is  0.1962862 
+55874 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 130
+iter from getPCG1ofSigmaAndVector 105
+var1 is  0.188524 
+33495 th marker
+G0 0 1 1 0 1 2 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 127
+iter from getPCG1ofSigmaAndVector 121
+var1 is  0.1747998 
+[1] "OK"
+[1] "OK1"
+[1] "OK2"
+CV for variance ratio estimate using  1000  markers is  1.778684e-05  <  0.001 
+varRatio 0.8913865 
+[1] 0.8913865
+          [,1]
+[1,] 0.8913865
+          [,1]
+[1,] 0.8913865
+[1] "./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE.varianceRatio.txt"
+         V1
+1 0.8913865
+closed the plinkFile!

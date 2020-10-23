@@ -1,0 +1,24 @@
+PLINK v2.00a2LM 64-bit Intel (9 Mar 2019)
+Options in effect:
+  --bfile nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new
+  --freq
+  --out nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new
+
+Hostname: mendel
+Working directory: /net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/survival/new_version/SAIGE/extdata/input
+Start time: Mon Sep 21 12:15:21 2020
+
+Random number seed: 1600704921
+257575 MiB RAM detected; reserving 128787 MiB for main workspace.
+Allocated 54331 MiB successfully, after larger attempt(s) failed.
+Using up to 88 threads (change this with --threads).
+1000 samples (0 females, 0 males, 1000 ambiguous; 1000 founders) loaded from
+nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new.fam.
+128868 variants loaded from
+nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new.bim.
+Note: No phenotype data present.
+Calculating allele frequencies... done.
+--freq: Allele frequencies (founders only) written to
+nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new.afreq .
+
+End time: Mon Sep 21 12:15:21 2020

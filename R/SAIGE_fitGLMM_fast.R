@@ -159,6 +159,7 @@ Get_Coef = function(y, X, tau, family, alpha0, eta0,  offset, maxiterPCG, tolPCG
     }else{
       re.coef = getCoefficients_LOCO(Y, X, W, tau, maxiter=maxiterPCG, tol=tolPCG)
     }
+
     alpha = re.coef$alpha
     eta = re.coef$eta + offset
 
@@ -386,6 +387,9 @@ glmmkin.ai_PCG_Rcpp_Binary = function(genofile, fit0, tau=c(0,0), fixtau = c(0,0
       endIndex = chromosomeEndIndexVec[j]
       if(!is.na(startIndex) && !is.na(endIndex)){
         setStartEndIndex(startIndex, endIndex)
+        #print("OK1")
+        print(startIndex)
+	print(endIndex)
         re.coef_LOCO = Get_Coef(y, X, tau, family, alpha, eta,  offset,verbose=verbose, maxiterPCG=maxiterPCG, tolPCG = tolPCG, maxiter=maxiter, inC = inC, LOCO = LOCO, tol.coef=tol)
         cov = re.coef_LOCO$cov
         alpha = re.coef_LOCO$alpha
@@ -410,6 +414,7 @@ glmmkin.ai_PCG_Rcpp_Binary = function(genofile, fit0, tau=c(0,0), fixtau = c(0,0
 	coef.alpha = alpha
 	}
 	if(!is.null(inC)){
+	 print("OK")	
 	  obj.noK=ScoreTest_NULL_Model_survival(mu, y, X)
           glmmResult$LOCOResult[[j]] = list(isLOCO = TRUE, coefficients=coef.alpha, linear.predictors=eta, fitted.values=mu, Y=Y, residuals=res, cov=cov, Lambda0 = Lambda0, obj.noK = obj.noK)
 	}else{

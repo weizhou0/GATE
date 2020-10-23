@@ -1,7 +1,7 @@
 #survival
 #step 1: fit the NULL glmm
 Rscript step1_fitNULLGLMM.R     \
-        --plinkFile=./input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly \
+        --plinkFile=./input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new \
         --phenoFile=./input/pheno_1000samples_survival.txt \
         --phenoCol=casecontrol \
         --covarColList=X \
@@ -9,13 +9,35 @@ Rscript step1_fitNULLGLMM.R     \
 	--eventTimeBinSize=1 \
         --sampleIDColinphenoFile=IND_ID \
         --traitType=survival        \
-        --outputPrefix=./output_test/example_survival_0.36.4_nointercept_nopcg \
-        --nThreads=4    \
+        --outputPrefix=./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_FALSE \
+        --nThreads=60    \
         --LOCO=FALSE    \
-        --minMAFforGRM=0.01	\
+        --minMAFforGRM=0.1	\
 	--skipModelFitting=FALSE	\
 	--tauInit=1,0	\
-	--pcgforUhatforSurvAnalysis=FALSE
+	--pcgforUhatforSurvAnalysis=FALSE	\
+	--numRandomMarkerforVarianceRatio=1000	
+
+
+
+
+Rscript step1_fitNULLGLMM.R     \
+        --plinkFile=./input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_new \
+        --phenoFile=./input/pheno_1000samples_survival.txt \
+        --phenoCol=casecontrol \
+        --covarColList=X \
+        --eventTimeCol=AgeOfEventFinal \
+        --eventTimeBinSize=1 \
+        --sampleIDColinphenoFile=IND_ID \
+        --traitType=survival        \
+        --outputPrefix=./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_TRUE \
+        --nThreads=60    \
+        --LOCO=TRUE    \
+        --minMAFforGRM=0.1      \
+        --skipModelFitting=FALSE        \
+        --tauInit=1,0   \
+        --pcgforUhatforSurvAnalysis=FALSE       \
+        --numRandomMarkerforVarianceRatio=1000
 
 
 
