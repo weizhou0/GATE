@@ -90,6 +90,16 @@ scoreTest_SAIGE_survivalTrait_cond_sparseSigma_fast=function(G0, AC, AF, MAF, Is
     NAset = which(G0==0)
     #tp4 = proc.time()
     out1 = scoreTest_SPAGMMAT_survivalTrait_cond_sparseSigma_fast(g, Score = out.score$Tstat, pval.noadj = out.score$pval.noadj, var1_a = out.score$var1, var2_a = out.score$var2, AC2, AC,NAset, y, mu.a, varRatio, Cutoff, sparseSigma=sparseSigma, isCondition=isCondition, OUT_cond=OUT_cond, G1tilde_P_G2tilde = G1tilde_P_G2tilde, G2tilde_P_G2tilde_inv=G2tilde_P_G2tilde_inv)
+
+
+    if(AF > 0.5){
+      out1$BETA = (-1)*out1$BETA
+      out1$Tstat = (-1)*out1$Tstat
+      if(isCondition){
+        out1$BETA_c = (-1) * out1$BETA_c
+        out1$Tstat_c = (-1) * out1$Tstat_c
+      }
+    }
     #tp5 = proc.time()
     #print("tp5-tp4")
     #print(tp5-tp4)	
