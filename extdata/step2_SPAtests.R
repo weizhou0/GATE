@@ -1,8 +1,9 @@
 #!/usr/bin/env Rscript
 
 options(stringsAsFactors=F)
+library(SAIGE)
 #library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug")
-library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug/")
+#library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug/")
 #library(SAIGE, lib.loc="/humgen/atgu1/fin/wzhou/tools/SAIGE_Poission_Survival/install_Poisson_Survival_0.36.6.1")
 #library(SAIGE, lib.loc="/humgen/atgu1/fin/wzhou/tools/SAIGE_Poission_Survival/install_Poisson_Survival_0.36.6")
 #library(SAIGE, lib.loc="~/install_dir/0.36.3.5_homN_hetN_surv")
