@@ -96,13 +96,16 @@ Getrmat_indexvec_new = function(i,inC){
 GetdenominLambda0 = function(caseIndexwithTies, lin.pred.new, newIndexWithTies){
   #demonVec = rep(0, length(caseIndex))
   explin<-exp(lin.pred.new)
-  
+  print("explin")
+  print(explin[1:10]) 
   getdenom = function(i,caseIndexwithTies, explin, newIndexWithTies){
     nc = length(explin)
     x = 1/sum(explin[which(newIndexWithTies >= caseIndexwithTies[i])])
     return(x)
   }
   demonVec = sapply(seq(1,length(caseIndexwithTies)), getdenom, caseIndexwithTies, explin, newIndexWithTies)
+  print("demonVec")
+  print(demonVec[1:10])
   #cat("demonVec: ", demonVec, "\n")
   return(demonVec)
 }
@@ -145,6 +148,12 @@ Get_Coef = function(y, X, tau, family, alpha0, eta0,  offset, maxiterPCG, tolPCG
     if(!is.null(inC)){
       Lambda0 = GetLambda0(eta, inC)
       mu = Lambda0*exp(eta)
+	  print("Lambda0")
+	  print(Lambda0[1:10])
+  	  print("exp(eta)")
+	  print(exp(eta)[1:10])	  
+  	  print("mu")
+	  print(mu[1:10])	  
       Y = eta + (y - mu)/mu
       W = as.vector(mu)
     }else{
@@ -350,7 +359,7 @@ glmmkin.ai_PCG_Rcpp_Binary = function(genofile, fit0, tau=c(0,0), fixtau = c(0,0
 
    if(!is.null(inC)){
       	  Lambda0 = GetLambda0(eta, inC)
-          mu = Lambda0*exp(eta)
+	  mu = Lambda0*exp(eta)
           Y = eta - offset + (y - mu)/mu
           W = as.vector(mu)
     }else{

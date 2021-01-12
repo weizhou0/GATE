@@ -11,7 +11,7 @@ Table of Contents
 # Introduction
 
 
-## Current version is 0.40.2
+## Current version is 0.41
 
 GATE (Genetic Analysis of Time-to-Event phenotypes) is an R package with Scalable and accurate genome-wide association analysis of censored survival data in large scale biobanks using frailty models. 
 
@@ -48,7 +48,8 @@ traitType = “survival”
 eventTimeCol is the column name for the event time, e.g. age of diagnosis
 eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1 means the bin size will be 1 and if  eventTimeBinSize is not specified, raw event time values will be used
 
-
+# Logs for bug fixing
+* 0.41 (January-11-2021) fix the error from the merging branches
 
 
 

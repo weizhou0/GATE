@@ -9,7 +9,7 @@ Rscript step1_fitNULLGLMM.R     \
 	--eventTimeBinSize=1 \
         --sampleIDColinphenoFile=IND_ID \
         --traitType=survival        \
-        --outputPrefix=./output_test/example_survival_0.36.4_nointercept_nopcg_LOCO_FALSE \
+        --outputPrefix=./output_test/example_survival \
         --nThreads=60    \
         --LOCO=FALSE    \
         --minMAFforGRM=0.1	\

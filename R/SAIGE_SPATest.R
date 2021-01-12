@@ -44,7 +44,7 @@
 #' @param IsSingleVarinGroupTest logical. Whether to perform single-variant assoc tests for genetic markers included in the gene-based tests. By default, FALSE
 #' @param cateVarRatioMinMACVecExclude vector of float. Lower bound of MAC for MAC categories. The length equals to the number of MAC categories for variance ratio estimation. By default, c(0.5,1.5,2.5,3.5,4.5,5.5,10.5,20.5). If groupFile="", only one variance ratio corresponding to MAC >= 20 is used 
 #' @param cateVarRatioMaxMACVecInclude vector of float. Higher bound of MAC for MAC categories. The length equals to the number of MAC categories for variance ratio estimation minus 1. By default, c(1.5,2.5,3.5,4.5,5.5,10.5,20.5). If groupFile="", only one variance ratio corresponding to MAC >= 20 is used
-#' @param dosageZerodCutoff numeric. In gene- or region-based tests, for each variants with MAC <= 10, dosages <= dosageZerodCutoff with be set to 0. By default, 0.2. 
+#' @param dosageZerodCutoff numeric. In gene- or region-based tests, for each variants with MAC <= minMACfordosageZerod, dosages <= dosageZerodCutoff with be set to 0. By default, 0.2. 
 #' @param minMACfordosageZerod numeric. For each variant with MAC <= minMACfordosageZerod, dosages <= dosageZerodCutoff with be set to 0. By default, 30
 #' @param IsOutputPvalueNAinGroupTestforBinary logical. In gene- or region-based tests for binary traits. if IsOutputPvalueNAinGroupTestforBinary is TRUE, p-values without accounting for case-control imbalance will be output. By default, FALSE 
 #' @param IsAccountforCasecontrolImbalanceinGroupTest logical. In gene- or region-based tests for binary traits. If IsAccountforCasecontrolImbalanceinGroupTest is TRUE, p-values after accounting for case-control imbalance will be output. By default, TRUE
@@ -279,6 +279,9 @@ SPAGMMATtest = function(bgenFile = "",
 
   if(NoMissingDosage){
     cat("NoMissingDosage is TRUE and there is no missing doages in the file\n")
+    if(IsDropMissingDosages){
+      stop("IsDropMissingDosages = TRUE. Please set NoMissingDosage = FALSE")
+    }	    
   }else{
     if(IsDropMissingDosages){
      cat("Samples with missing dosages will be dropped from the analysis\n")
@@ -567,14 +570,14 @@ cat("It is a survival trait\n")
       }
 
       if(IsOutputAFinCaseCtrl){
-        resultHeader = c(resultHeader, "AF.Cases", "AF.Controls")
+        resultHeader = c(resultHeader, "AF.Events", "AF.Censored")
       }
       if(IsOutputNinCaseCtrl){
-        resultHeader = c(resultHeader, "N.Cases", "N.Controls")
+        resultHeader = c(resultHeader, "N.Events", "N.Censored")
       }
 
       if(IsOutputHetHomCountsinCaseCtrl){
-   	resultHeader = c(resultHeader, "homN_Allele2_cases", "hetN_Allele2_cases", "homN_Allele2_ctrls", "hetN_Allele2_ctrls")
+   	resultHeader = c(resultHeader, "homN_Allele2_events", "hetN_Allele2_events", "homN_Allele2_censored", "hetN_Allele2_censored")
       }
       write(resultHeader,file = SAIGEOutputFile, ncolumns = length(resultHeader))
     } #if(!isGroupTest){
@@ -607,7 +610,6 @@ cat("It is a survival trait\n")
 	obj.glmm.null$obj.noK$XVX_inv_fg = XVX_inv_fg
 	obj.glmm.null$obj.noK$XXVX_inv_fg = XXVX_inv_fg
 																		}
-
         obj.glmm.null$obj.noK$XVX_inv_XV_fg = obj.glmm.null$obj.noK$XXVX_inv_fg * obj.glmm.null$obj.noK$V
         indChromCheck = FALSE
     if(!obj.glmm.null$LOCO){
@@ -844,7 +846,7 @@ cat("It is a survival trait\n")
 	if(IsOutputHetHomCountsinCaseCtrl){
 		G0round = G0round[missingind]
 	}  
-
+	print("check0")
         G0 = G0[missingind]
 	subsetModelResult = subsetModelFileforMissing(obj.glmm.null, missingind, mu, mu.a ,mu2.a)	
 	obj.glmm.null.sub = subsetModelResult$obj.glmm.null.sub
@@ -864,7 +866,7 @@ cat("It is a survival trait\n")
 		if(MAC_Allele2.sub <= minMACfordosageZerod){
 			G0[which(G0 < dosageZerodCutoff)] = 0
 			AC_Allele2.sub = sum(G0)	
-	i	}	
+		}	
 	}	
 
 	AF_Allele2.sub = AC_Allele2.sub/(2*N.sub)
@@ -887,7 +889,7 @@ cat("It is a survival trait\n")
 
 
 
-        if(traitType == "binary"){
+        if(traitType == "binary" | traitType == "survival"){
           y1Index.sub = which(y.sub == 1)
           NCase.sub = length(y1Index.sub)
           y0Index.sub = which(y.sub == 0)
@@ -934,13 +936,13 @@ cat("It is a survival trait\n")
    	  if(IsOutputHetHomCountsinCaseCtrl){
                 OUTvec=c(OUTvec, homN_Allele2_cases, hetN_Allele2_cases, homN_Allele2_ctrls, hetN_Allele2_ctrls)
 	}
-
 	OUT = rbind(OUT, OUTvec)
 	   OUTvec=NULL
 	  }else{ #if (NCase.sub == 0 | NCtrl.sub == 0) {
 		if(traitType == "binary"){
            		out1 = scoreTest_SAIGE_binaryTrait_cond_sparseSigma(G0, AC, AF, MAF, IsSparse, obj.glmm.null.sub$obj.noK, mu.a.sub, mu2.a.sub, y.sub, varRatio, Cutoff, rowHeader, sparseSigma=sparseSigma.sub, isCondition=isCondition, OUT_cond=OUT_cond.sub, G1tilde_P_G2tilde = G1tilde_P_G2tilde.sub, G2tilde_P_G2tilde_inv = G2tilde_P_G2tilde_inv.sub)
 		}else if(traitType == "survival"){
+	print("Check")
 
 			if(IsSPAfast){
 				out1 = scoreTest_SAIGE_survivalTrait_cond_sparseSigma_fast(G0, AC, AF, MAF, IsSparse, obj.glmm.null.sub$obj.noK, mu.a.sub, mu2.a.sub, y.sub, varRatio, Cutoff, rowHeader, sparseSigma=sparseSigma.sub, isCondition=isCondition, OUT_cond=OUT_cond.sub, G1tilde_P_G2tilde = G1tilde_P_G2tilde.sub, G2tilde_P_G2tilde_inv = G2tilde_P_G2tilde_inv.sub)
@@ -1111,7 +1113,9 @@ cat("It is a survival trait\n")
        headerline = c("markerID", "AC", "AF", "N", "BETA", "SE", "Tstat", "p.value","varT","varTstar") 
 	 if(traitType=="binary"){
 	   headerline = c(headerline, "AF.Cases", "AF.Controls", "N.Cases", "N.Controls")	
-	 }	
+	 }else if(traitType=="survival"){
+	   headerline = c(headerline, "AF.Events", "AF.Censored", "N.Events", "N.Censored")	
+	 }	 
        write(headerline,file = SAIGEOutputFile_single, ncolumns = length(headerline))
      }
     	 
@@ -2230,6 +2234,7 @@ subsetModelFileforMissing=function(obj.glmm.null, missingind, mu, mu.a, mu2.a){
     		}
   	}
 
+    if(is.null(obj.glmm.null.sub$obj.noK$X1_fg)){
         obj.glmm.null.sub$obj.noK$X1 = obj.glmm.null.sub$obj.noK$X1[missingind,]
         obj.glmm.null.sub$obj.noK$V = obj.glmm.null.sub$obj.noK$V[missingind]
 	obj.glmm.null.sub$obj.noK$XV = t(obj.glmm.null.sub$obj.noK$X1 * obj.glmm.null.sub$obj.noK$V)
@@ -2264,9 +2269,9 @@ subsetModelFileforMissing=function(obj.glmm.null, missingind, mu, mu.a, mu2.a){
                 obj.glmm.null.sub$obj.noK$XVX_inv_XV = as.matrix(obj.glmm.null.sub$obj.noK$XVX_inv_XV)
         }
 
+    }else{
 
-
-     if(!is.null(obj.glmm.null.sub$obj.noK$X1_fg)){
+     #if(!is.null(obj.glmm.null.sub$obj.noK$X1_fg)){
         obj.glmm.null.sub$obj.noK$X1_fg = obj.glmm.null.sub$obj.noK$X1_fg[missingind,]
         obj.glmm.null.sub$obj.noK$V = obj.glmm.null.sub$obj.noK$V[missingind]
 	obj.glmm.null.sub$obj.noK$XV_fg = t(obj.glmm.null.sub$obj.noK$X1_fg * obj.glmm.null.sub$obj.noK$V)
@@ -2274,7 +2279,13 @@ subsetModelFileforMissing=function(obj.glmm.null, missingind, mu, mu.a, mu2.a){
 	obj.glmm.null.sub$obj.noK$XVX_inv_fg = solve(obj.glmm.null.sub$obj.noK$XVX_fg)
 	obj.glmm.null.sub$obj.noK$XXVX_inv_fg = obj.glmm.null.sub$obj.noK$X1_fg %*% obj.glmm.null.sub$obj.noK$XVX_inv_fg
 	obj.glmm.null.sub$obj.noK$XVX_inv_XV_fg = obj.glmm.null.sub$obj.noK$XXVX_inv_fg * obj.glmm.null.sub$obj.noK$V
+	#print(length(obj.glmm.null.sub$obj.noK$y))
+	#print(length(missingind))
         obj.glmm.null.sub$obj.noK$y = obj.glmm.null.sub$obj.noK$y[missingind]
+
+	#print("obj.glmm.null.sub$obj.noK")
+	#print(length(obj.glmm.null.sub$obj.noK$y))
+
 
         ##fitted values
         obj.glmm.null.sub$fitted.values = obj.glmm.null.sub$fitted.values[missingind]

@@ -1722,9 +1722,19 @@ arma::fcolvec getCrossprod(arma::fcolvec& bVec, arma::fvec& wVec, arma::fvec& ta
 
         arma::fcolvec crossProdVec;
         // Added by SLEE, 04/16/2017
-        if(tauVec(1) == 0){
+	int Nnomissing = geno.getNnomissing();
+	for(unsigned int i = 0; i < Nnomissing; i++){
+                if(wVec(i) < 1e-4){
+                        wVec(i) = 0.0001;
+                }
+        }
+
+
+	if(tauVec(1) == 0){
                 crossProdVec = tauVec(0)*(bVec % (1/wVec));
-                return(crossProdVec);
+		//std::cout << "1/wVec" << std::endl;
+		//wVec.print();
+		return(crossProdVec);
         }
         //
         arma::fvec crossProd1  = getCrossprodMatAndKin(bVec);
@@ -3228,7 +3238,6 @@ arma::fvec gen_spsolve_v4(arma::fvec& wVec,  arma::fvec& tauVec, arma::fvec & yv
 //    std::cout << "result.n_rows: " << result.n_rows << std::endl;
 //    std::cout << "result.n_cols: " << result.n_cols << std::endl;
     arma::vec x = arma::spsolve(result, yvec2);
-
 //double wall3in = get_wall_time();
 // double cpu3in  = get_cpu_time();
 // cout << "Wall Time in gen_spsolve_v4 = " << wall3in - wall2in << endl;
@@ -3372,22 +3381,27 @@ arma::fvec getPCG1ofSigmaAndVector(arma::fvec& wVec,  arma::fvec& tauVec, arma::
 
         while (sumr2 > tolPCG && iter < maxiterPCG) {
                 iter = iter + 1;
+		cout << "pVec: " << pVec(0) << endl;
+		pVec.print();
                 arma::fcolvec ApVec = getCrossprod(pVec, wVec, tauVec);
-		//cout << "ApVec: " << endl;
-		//ApVec.print();
+		cout << "ApVec: " << ApVec(0) << endl;
+		ApVec.print();
                 arma::fvec preA = (rVec.t() * zVec)/(pVec.t() * ApVec);
-
+		arma::fvec pVecAp = pVec.t() * ApVec;
+		pVecAp.print();
                 float a = preA(0);
 
 /*           if(bVec[0] == 1 && bVec[2] == 1){
                         cout << "bVec[0] == 1 && bVec[2] == 1: " << endl;
                         for(int i = 0; i < 10; i++){
-
+*/
+int i=0;	
                                 cout << "ApVec[i]: " << i << " " << ApVec[i] << endl;
                                 cout << "pVec[i]: " << i << " " << pVec[i] << endl;
                                 cout << "zVec[i]: " << i << " " << zVec[i] << endl;
                                 cout << "rVec[i]: " << i << " " << rVec[i] << endl;
-                        }
+/*
+	}
                     }
 */
 
@@ -3402,7 +3416,11 @@ arma::fvec getPCG1ofSigmaAndVector(arma::fvec& wVec,  arma::fvec& tauVec, arma::
 */
 
 
+		cout << "rVec[i] 1: " << i << " " << rVec[i] << endl;
+		cout << "ApVec[i] 1: " << i << " " << ApVec[i] << endl;
+		cout << "a: " << a << endl;
                 r1Vec = rVec - a * ApVec;
+		cout << "r1Vec[i] 1: " << i << " " << r1Vec[i] << endl;
 /*
                 if(bVec[0] == 1 && bVec[2] == 1){
                         cout << "a: " << a  << endl;
@@ -3432,12 +3450,19 @@ arma::fvec getPCG1ofSigmaAndVector(arma::fvec& wVec,  arma::fvec& tauVec, arma::
 
                 arma::fvec Prebet = (z1Vec.t() * r1Vec)/(zVec.t() * rVec);
                 float bet = Prebet(0);
+		cout << "bet: " << bet << endl;
+                cout << "Prebet.n_elem: " << Prebet.n_elem << endl;
+                cout << "z1Vec(10): " << z1Vec(10) << endl;
+                cout << "r1Vec(10): " << r1Vec(10) << endl;
+
                 pVec = z1Vec+ bet*pVec;
                 zVec = z1Vec;
                 rVec = r1Vec;
 
+
+		cout << "rVec[i] 2: " << i << " " << rVec[i] << endl;
                 sumr2 = sum(rVec % rVec);
-                        //std::cout << "sumr2: " << sumr2 << std::endl;
+                std::cout << "sumr2: " << sumr2 << std::endl;
                         //std::cout << "tolPCG: " << tolPCG << std::endl;
 /*
                 if(bVec[0] == 1 && bVec[2] == 1){
@@ -4782,8 +4807,11 @@ Rcpp::List getCoefficients(arma::fvec& Yvec, arma::fmat& Xmat, arma::fvec& wVec,
   	arma::fvec XmatVecTemp;
   	for(int i = 0; i < colNumX; i++){
     		XmatVecTemp = Xmat.col(i);
-
+		std::cout << "Xmat i" << i << std::endl;
+		std::cout << XmatVecTemp(0) << " " <<  XmatVecTemp(1) << std::endl;
     		Sigma_iX.col(i) = getPCG1ofSigmaAndVector(wVec, tauVec, XmatVecTemp, maxiterPCG, tolPCG);
+		std::cout << "Sigma_iX.col(i) i" << i << std::endl;
+		std::cout << Sigma_iX.col(i)(0) << " " <<  Sigma_iX.col(i)(1) << std::endl;
 
   	}
 
@@ -4805,10 +4833,17 @@ Rcpp::List getCoefficients(arma::fvec& Yvec, arma::fmat& Xmat, arma::fvec& wVec,
 	  cov = arma::pinv(Xmatt * Sigma_iX);
 	  cout << "inv_sympd failed, inverted with pinv" << endl;
 	}
-
+	arma::fmat XSX = Xmatt * Sigma_iX;
+	std::cout << "XSX" << std::endl;
+	XSX.print();
+	std::cout << "cov" << std::endl;
+	cov.print();
+	
  	arma::fmat Sigma_iXt = Sigma_iX.t();
   	arma::fvec SigmaiXtY = Sigma_iXt * Yvec;
   	arma::fvec alpha = cov * SigmaiXtY;
+	std::cout << "SigmaiXtY" << std::endl;
+	SigmaiXtY.print();
 
   	arma::fvec eta = Yvec - tauVec(0) * (Sigma_iY - Sigma_iX * alpha) / wVec;
   	return Rcpp::List::create(Named("Sigma_iY") = Sigma_iY, Named("Sigma_iX") = Sigma_iX, Named("cov") = cov, Named("alpha") = alpha, Named("eta") = eta);

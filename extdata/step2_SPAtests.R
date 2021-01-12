@@ -1,7 +1,8 @@
 #!/usr/bin/env Rscript
 
 options(stringsAsFactors=F)
-library(SAIGE)
+#library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug")
+library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug/")
 #library(SAIGE, lib.loc="/humgen/atgu1/fin/wzhou/tools/SAIGE_Poission_Survival/install_Poisson_Survival_0.36.6.1")
 #library(SAIGE, lib.loc="/humgen/atgu1/fin/wzhou/tools/SAIGE_Poission_Survival/install_Poisson_Survival_0.36.6")
 #library(SAIGE, lib.loc="~/install_dir/0.36.3.5_homN_hetN_surv")
@@ -89,6 +90,7 @@ option_list <- list(
     help="More options can be seen in the SKAT library"),
   make_option("--IsSingleVarinGroupTest",type="logical", default=FALSE,
     help="Whether to perform single-variant assoc tests for genetic markers included in the gene-based tests. By default, FALSE"),
+  make_option("--minMACfordosageZerod",type="numeric", default=30, help="For each variant with MAC <= minMACfordosageZerod, dosages <= dosageZerodCutoff with be set to 0. [default=10]"),		    
   make_option("--cateVarRatioMinMACVecExclude",type="character", default="0.5,1.5,2.5,3.5,4.5,5.5,10.5,20.5",
     help="vector of float. Lower bound of MAC for MAC categories. The length equals to the number of MAC categories for variance ratio estimation. [default='0.5,1.5,2.5,3.5,4.5,5.5,10.5,20.5']"),
   make_option("--cateVarRatioMaxMACVecInclude",type="character", default="1.5,2.5,3.5,4.5,5.5,10.5,20.5",
@@ -107,7 +109,10 @@ option_list <- list(
   make_option("--IsOutputBETASEinBurdenTest", type="logical",default=FALSE,
     help="Whether to output effect sizes for burden tests. [default=FALSE]"),
   make_option("--IsSPAfast", type="logical",default=TRUE,
-    help="Whether to use the fast SPA. [default=TRUE]")	
+    help="Whether to use the fast SPA. [default=TRUE]"),
+  make_option("--NoMissingDosage", type="logical",default=TRUE,
+    help="If TRUE, there is no missing dosages in the dosage file. If FALSE, if IsDropMissingDosages=TRUE, missing dosages will be removed from the analysis, otherwise, they will be mean imputed. Set NoMissingDosage = TRUE can skip the step to check missing dosages to save computation time[default=TRUE]")
+
 )
 
 
@@ -190,5 +195,6 @@ SPAGMMATtest(vcfFile=opt$vcfFile,
 	     weights_for_G2_cond=weights_for_G2_cond,
 		IsOutputBETASEinBurdenTest=opt$IsOutputBETASEinBurdenTest,
 		IsSPAfast = opt$IsSPAfast,
-		minMACfordosageZerod = opt$minMACfordosageZerod	
+		minMACfordosageZerod = opt$minMACfordosageZerod	,
+		NoMissingDosage = opt$NoMissingDosage
 )
