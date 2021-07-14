@@ -11,7 +11,7 @@ Table of Contents
 # Introduction
 
 
-## Current version is 0.41
+## Current version is 0.42
 
 GATE (Genetic Analysis of Time-to-Event phenotypes) is an R package with Scalable and accurate genome-wide association analysis of censored survival data in large scale biobanks using frailty models. 
 
@@ -20,8 +20,6 @@ GATE performs single-variant association tests for time-to-event endpoints. GATE
 GATE is based on joint work by Rouank Dey and Wei Zhou. 
 
 
-*This R package is still under development using the SAIGE github repository and will be moved to a new github repository soon. 
-
 # Citation
 
 
@@ -29,8 +27,7 @@ GATE is based on joint work by Rouank Dey and Wei Zhou.
 
   https://github.com/weizhouUMICH/SAIGE/wiki/Genetic-association-tests-using-SAIGE
 
-The github branch name is **SAIGE_homN_hetN_surv**
-The docker image can be found in the docker hub **wzhou88/saige.survival:0.40.2**
+The docker image can be found in the docker hub **wzhou88/saige.survival:0.42**
 
 # Notes for users before running jobs
 * After installation, the package needs to be called as SAIGE (will update)
@@ -49,6 +46,8 @@ eventTimeCol is the column name for the event time, e.g. age of diagnosis
 eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1 means the bin size will be 1 and if  eventTimeBinSize is not specified, raw event time values will be used
 
 # Logs for bug fixing
+* 0.42 (July-14-2021) fix the "AF > 0.5" error when input file is VCF
+
 * 0.41 (January-11-2021) fix the error from the merging branches
 
 
