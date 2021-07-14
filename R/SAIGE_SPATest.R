@@ -309,8 +309,9 @@ SPAGMMATtest = function(bgenFile = "",
 
     ###chrom needs to be specified 
     if(chrom == ""){stop("ERROR! chrom needs to be specified for the vcf file\n")}
-    setMissing_vcf(IsDropMissingDosages, NoMissingDosage)
-    setMissing_Matrix_vcf(IsDropMissingDosages, NoMissingDosage)
+        setIsDropMissingDosages_vcf(IsDropMissingDosages)
+    #setMissing_vcf(IsDropMissingDosages, NoMissingDosage)
+    #setMissing_Matrix_vcf(IsDropMissingDosages, NoMissingDosage)
   }else if(savFile != ""){
     if(!file.exists(savFile)){
       stop("ERROR! savFile ", savFile, " does not exsit\n")
@@ -324,8 +325,9 @@ SPAGMMATtest = function(bgenFile = "",
       vcfFileIndex = savFileIndex
     }	
     dosageFileType = "vcf"
-    setMissing_vcf(IsDropMissingDosages, NoMissingDosage)
-    setMissing_Matrix_vcf(IsDropMissingDosages, NoMissingDosage)
+    #setMissing_vcf(IsDropMissingDosages, NoMissingDosage)
+    #setMissing_Matrix_vcf(IsDropMissingDosages, NoMissingDosage)
+       setIsDropMissingDosages_vcf(IsDropMissingDosages)
   }
 
   ##############START TEST########################
@@ -730,6 +732,10 @@ cat("It is a survival trait\n")
       isVariant = getGenoOfnthVar_vcfDosage_pre()
       SetSampleIdx_vcfDosage(sampleIndex, N)
       nsamplesinVCF = getSampleSizeinVCF()
+      #print("sampleListinDosage")
+      #print(sampleListinDosage)
+      #print("nsamplesinVCF")
+      #print(nsamplesinVCF)
      if(nrow(sampleListinDosage) != nsamplesinVCF){
         stop("ERROR! The number of samples specified in the sample file does not equal to the number of samples in the VCF file\nPlease check again. Please note that the sample file needs to have no header.")
     }
@@ -773,6 +779,7 @@ cat("It is a survival trait\n")
         G0 = Gx$dosages
         AC = Gx$variants$AC
         AF = Gx$variants$AF
+	#print(Gx$variants)
         markerInfo = Gx$variants$markerInfo
         if(!(markerInfo >= 0 & markerInfo <= 1)){markerInfo=1; Gx$variants$markerInfo=1}
         rowHeader=as.vector(unlist(Gx$variants))

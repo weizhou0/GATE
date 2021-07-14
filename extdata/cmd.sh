@@ -43,7 +43,7 @@ Rscript step1_fitNULLGLMM.R     \
 
 Rscript step2_SPAtests.R        \
         --vcfFile=./input/genotype_10markers.missingness.vcf.gz \
-        --vcfFileIndex=./input/genotype_10markers.missingness.vcf.gz.tbi \
+        --vcfFileIndex=./input/genotype_10markers.missingness.vcf.gz.csi \
         --vcfField=GT \
         --chrom=1 \
         --minMAF=0.0001 \

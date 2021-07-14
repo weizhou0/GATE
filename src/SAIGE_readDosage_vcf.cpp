@@ -1,6 +1,6 @@
-#include "../thirdParty/cget/include/savvy/reader.hpp"
-#include "../thirdParty/cget/include/savvy/varint.hpp"
-#include "../thirdParty/cget/include/savvy/sav_reader.hpp"
+#include "savvy/reader.hpp"
+#include "savvy/varint.hpp"
+#include "savvy/sav_reader.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -9,55 +9,58 @@
 #include <Rcpp.h>
 #include <stdlib.h>
 #include <cstring>
-
+#include <limits>
 
 // Open the vcf file for reading.
-savvy::indexed_reader reader;
+savvy::reader reader{""};
 
 //VcfHeader header;
-savvy::variant<std::vector<float>> record;
+savvy::variant record;
 std::string testField;
 
 Rcpp::IntegerVector gm_sample_idx_vcfDosage;
 int gmtest_samplesize_vcfDosage;
 
 int numSamples_vcf;
+bool isDropMissingDosages_vcf = false;
 
 using namespace std;
 
-bool isDropMissingDosages_vcf = false;
-bool noMissingDosages_vcf = true;
 
 
-// [[Rcpp::export]]
-void setMissing_vcf(bool isDropMissing, bool noMissingDosages){
-  isDropMissingDosages_vcf = isDropMissing;
-  noMissingDosages_vcf = noMissingDosages;
-}
 
 // [[Rcpp::export]]
 void SetSampleIdx_vcfDosage(Rcpp::IntegerVector sample_idx, int Ntest){
   gmtest_samplesize_vcfDosage = Ntest;
   gm_sample_idx_vcfDosage = sample_idx;
-
 }
 
+//TODO: Why does this function exist? testField is set in setgenoTest_vcfDosage()
 //[[Rcpp::export]]
 void setTestField(std::string testFieldInput){
   testField = testFieldInput;
+  if (std::find_if(reader.format_headers().begin(), reader.format_headers().end(),
+    [](const savvy::header_value_details& h) { return h.id == testField; }) == reader.format_headers().end()) {
+    if ((testField == "DS" || testField == "GT") && std::find_if(reader.format_headers().begin(), reader.format_headers().end(),
+      [](const savvy::header_value_details& h) { return h.id == "HDS"; }) != reader.format_headers().end()) {
+      testField = "HDS";
+    }
+  }
 }
 
-
+// [[Rcpp::export]]
+void setIsDropMissingDosages_vcf (bool isdropmissingdosages){
+  isDropMissingDosages_vcf = isdropmissingdosages;
+}
 
 // [[Rcpp::export]]
 bool setgenoTest_vcfDosage(const std::string& vcfFileName,  const std::string& vcfFileIndex, const std::string& vcfField, const std::string& ids_to_exclude_vcf, const std::string& ids_to_include_vcf, const std::string& chromNam, int32_t start = 0, int32_t end = 0){
-
-  if(vcfField == "DS"){
-    //reader = savvy::indexed_reader(vcfFileName, {chromNam, std::uint32_t(start), std::uint32_t(end)}, savvy::fmt::dosage);
-      reader = savvy::indexed_reader(vcfFileName, {chromNam, std::uint32_t(start), std::uint32_t(end)}, savvy::fmt::ds);
-  }else if(vcfField == "GT"){
-    //reader = savvy::indexed_reader(vcfFileName, {chromNam, std::uint32_t(start), std::uint32_t(end)}, savvy::fmt::genotype);
-      reader = savvy::indexed_reader(vcfFileName, {chromNam, std::uint32_t(start), std::uint32_t(end)}, savvy::fmt::ac);
+  testField = vcfField;  
+  reader = savvy::reader(vcfFileName);
+  
+  if(chromNam != "" || start > 1 || std::uint32_t(end) < std::numeric_limits<std::int32_t>::max()){
+    std::cout << "Setting genomic region " << chromNam << ":" << std::uint32_t(start) << ":" << std::uint32_t(end) << std::endl;
+    reader.reset_bounds({chromNam, std::uint32_t(start), std::uint32_t(end)});
   }
 
   bool isVcfOpen = reader.good();
@@ -67,9 +70,20 @@ bool setgenoTest_vcfDosage(const std::string& vcfFileName,  const std::string& v
     std::cout << "Number of meta lines in the vcf file (lines starting with ##): " << reader.headers().size() << endl;
     std::cout << "Number of samples in in the vcf file: " << reader.samples().size() << endl;
     numSamples_vcf = reader.samples().size();
-  }else{
+
+    if (std::find_if(reader.format_headers().begin(), reader.format_headers().end(),
+      [](const savvy::header_value_details& h) { return h.id == testField; }) == reader.format_headers().end()) {
+      if ((testField == "DS" || testField == "GT") && std::find_if(reader.format_headers().begin(), reader.format_headers().end(),
+        [](const savvy::header_value_details& h) { return h.id == "HDS"; }) != reader.format_headers().end()) {
+        testField = "HDS";
+      } else {
+        std::cerr << "ERROR: vcfField (" << testField << ") not present in genotype file." << std::endl;
+        return false;
+      }
+    }
+  } else {
     numSamples_vcf = -10;
-    std::cout << "WARNING: Open VCF failed" << std::endl;
+    std::cerr << "WARNING: Open VCF failed" << std::endl;
   }
 
   return(isVcfOpen);
@@ -93,6 +107,14 @@ std::vector< std::string > getSampleIDlist(){
 // [[Rcpp::export]]
 bool getGenoOfnthVar_vcfDosage_pre(){
   bool isReadVariant = reader >> record;
+  if (isReadVariant) {
+    if (record.alts().size() != 1) { // TODO: support multiallelics
+      std::cerr << "Error: variants must be biallelic" << std::endl;
+      isReadVariant = false;
+    }
+  } else if (reader.bad()) {
+    std::cerr << "Error: READ FAILED" << std::endl;
+  }
   return(isReadVariant);
 }
 
@@ -101,7 +123,7 @@ bool getGenoOfnthVar_vcfDosage_pre(){
 Rcpp::List getGenoOfnthVar_vcfDosage(int mth) {
   //bool isGetDosage = TRUE;
   using namespace Rcpp;
-  std::string rsid(record.prop("ID"));
+  std::string rsid(record.id());
   std::string chromosome(record.chromosome());
   //int positionnum = record.get1BasedPosition();
   //std::string position = std::to_string(positionnum);
@@ -109,16 +131,18 @@ Rcpp::List getGenoOfnthVar_vcfDosage(int mth) {
   int numAlt = 1;
   std::vector< std::string > alleles(numAlt);
   std::string alleles0(record.ref());
-  std::string alleles1(record.alt());
+  std::string alleles1(record.alts().empty() ? "" : record.alts()[0]);
+  float variant_r2 = 1.f;
+  record.get_info("R2", variant_r2);
   List result ;
 
 
   int numSamples = reader.samples().size();
   std::vector< float > dosages;
+  savvy::compressed_vector<float> sparse_dosages;
   float dosage;
   const std::string * geno;
   float AC = 0;
-  float AF = 0.0;
   int genoi;
   int numGTs;
   //////////
@@ -127,42 +151,46 @@ Rcpp::List getGenoOfnthVar_vcfDosage(int mth) {
 
   std::size_t missing_cnt = 0;
   std::vector< int > indexforMissing;
-  if(noMissingDosages_vcf){
-    for (std::vector<float>::iterator it = record.data().begin(); it != record.data().end(); ++it) {
-    int i = std::distance(record.data().begin(), it);
+
+  if (!record.get_format(testField, sparse_dosages)) {
+    std::cerr << "Warning: missing FMT field (" << testField << ")" << std::endl;
+    return result;
+  }
+  if (!sparse_dosages.size() || !reader.samples().size()) {
+    std::cerr << "Warning: no sample level data available" << std::endl;
+    return result;
+  }
+
+  std::size_t ploidy = sparse_dosages.size() / reader.samples().size();
+  savvy::stride_reduce(sparse_dosages, ploidy);
+
+  for (auto it = sparse_dosages.begin(); it != sparse_dosages.end(); ++it) {
+    int i = it.offset();
     if(gm_sample_idx_vcfDosage[i] >= 0) {
+      if (std::isnan(*it)) {
+        dosages[gm_sample_idx_vcfDosage[i]] = -1.f;
+        ++missing_cnt;
+        indexforMissing.push_back(gm_sample_idx_vcfDosage[i]);
+      } else {
         dosages[gm_sample_idx_vcfDosage[i]] = *it;
         AC = AC + *it;
       }
     }
-    AF = AC / 2 / (float)(gmtest_samplesize_vcfDosage);
-  }else{
-    for (std::vector<float>::iterator it = record.data().begin(); it != record.data().end(); ++it) {
-      int i = std::distance(record.data().begin(), it);
-      if(gm_sample_idx_vcfDosage[i] >= 0) {
-        if (std::isnan(*it)) {
-          dosages[gm_sample_idx_vcfDosage[i]] = -1;
-          ++missing_cnt;
-          indexforMissing.push_back(gm_sample_idx_vcfDosage[i]);
-        }else {
-          dosages[gm_sample_idx_vcfDosage[i]] = *it;
-          AC = AC + *it;
-        }
-      }
-    }
-
-    AF = AC / 2 / (float)(gmtest_samplesize_vcfDosage - missing_cnt) ;
+  }
+  float AF = 0.f;
+  if(gmtest_samplesize_vcfDosage > missing_cnt){
+    AF = AC / 2.f / (float)(gmtest_samplesize_vcfDosage - missing_cnt) ;
+  }
   //set missing dosages to be the 2*AF
+  if(missing_cnt > 0){
+    float imputeDosage = 2*AF;
+    for (unsigned int i = 0; i < indexforMissing.size(); i++)
+    {
+      dosages[indexforMissing[i]] = imputeDosage;
+    } 
     if(!isDropMissingDosages_vcf){
-      float imputeDosage = 2*AF;
-      if(missing_cnt > 0){
-        for (unsigned int i = 0; i < indexforMissing.size(); i++)
-        {
-          dosages[indexforMissing[i]] = imputeDosage;	
-        }  
-      }
-      AC = AC + imputeDosage*missing_cnt;
-    }
+      AC = AC + imputeDosage * missing_cnt;
+    } 
   }
 
     result[ "dosages" ] = dosages;
@@ -178,7 +206,7 @@ Rcpp::List getGenoOfnthVar_vcfDosage(int mth) {
     _["stringsAsFactors"] = false,
     Named("AC") = AC,
     Named("AF") = AF,
-    Named("markerInfo") = record.prop("R2")
+    Named("markerInfo") = variant_r2
   );
 
 
