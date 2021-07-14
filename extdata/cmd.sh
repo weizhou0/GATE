@@ -55,7 +55,7 @@ Rscript step2_SPAtests.R        \
         --numLinesOutput=2 \
         --IsOutputAFinCaseCtrl=TRUE     \
         --IsOutputNinCaseCtrl=TRUE	\
-	--IsSPAfast=TRUE
+	--IsSPAfast=FALSE
 
 
 
