@@ -4,7 +4,7 @@ options(stringsAsFactors=F)
 
 ## load R libraries
 library(SAIGE)
-#library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug")
+#library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/GATE")
 require(optparse) #install.packages("optparse")
 
 print(sessionInfo())

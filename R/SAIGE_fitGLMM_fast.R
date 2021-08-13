@@ -96,16 +96,16 @@ Getrmat_indexvec_new = function(i,inC){
 GetdenominLambda0 = function(caseIndexwithTies, lin.pred.new, newIndexWithTies){
   #demonVec = rep(0, length(caseIndex))
   explin<-exp(lin.pred.new)
-  print("explin")
-  print(explin[1:10]) 
+  #print("explin")
+  #print(explin[1:10]) 
   getdenom = function(i,caseIndexwithTies, explin, newIndexWithTies){
     nc = length(explin)
     x = 1/sum(explin[which(newIndexWithTies >= caseIndexwithTies[i])])
     return(x)
   }
   demonVec = sapply(seq(1,length(caseIndexwithTies)), getdenom, caseIndexwithTies, explin, newIndexWithTies)
-  print("demonVec")
-  print(demonVec[1:10])
+  #print("demonVec")
+  #print(demonVec[1:10])
   #cat("demonVec: ", demonVec, "\n")
   return(demonVec)
 }
@@ -148,12 +148,12 @@ Get_Coef = function(y, X, tau, family, alpha0, eta0,  offset, maxiterPCG, tolPCG
     if(!is.null(inC)){
       Lambda0 = GetLambda0(eta, inC)
       mu = Lambda0*exp(eta)
-	  print("Lambda0")
-	  print(Lambda0[1:10])
-  	  print("exp(eta)")
-	  print(exp(eta)[1:10])	  
-  	  print("mu")
-	  print(mu[1:10])	  
+	  #print("Lambda0")
+	  #print(Lambda0[1:10])
+  	  #print("exp(eta)")
+	  #print(exp(eta)[1:10])	  
+  	  #print("mu")
+	  #print(mu[1:10])	  
       Y = eta + (y - mu)/mu
       W = as.vector(mu)
     }else{
@@ -1142,8 +1142,8 @@ fitNULLGLMM = function(plinkFile = "",
         #setgeno(plinkFile, dataMerge_sort$IndexGeno, memoryChunk, isDiagofKinSetAsOne)
 	sparseGRMtest = getsubGRM(sparseGRMFile, sparseGRMSampleIDFile, dataMerge_sort$IID)
         m4 = gen_sp_v2(sparseGRMtest)
-        print("print m4")
-        print(dim(m4))
+        #print("print m4")
+        #print(dim(m4))
         A = summary(m4)
         locationMatinR = rbind(A$i-1, A$j-1)
         valueVecinR = A$x
@@ -1765,9 +1765,9 @@ scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait = function(obj.glmm.null,
 
       if(numTestedMarker %% 10 == 0 | numTestedMarker == numMarkers | indexInMarkerList-1 == length(listOfMarkersForVarRatio[[k]]) ){
           OUT = as.data.frame(OUT)
-          print("OK")
+          #print("OK")
           OUTtotal = rbind(OUTtotal, OUT)
-          print("OK1")
+          #print("OK1")
           write.table(OUT, testOut, quote=FALSE, row.names=FALSE, col.names=FALSE, append = TRUE)
           OUT = NULL
         }
@@ -1798,7 +1798,7 @@ scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait = function(obj.glmm.null,
     if(indexInMarkerList-1 == length(listOfMarkersForVarRatio[[k]])){
       ratioCV = ratioCVcutoff
       cat("no more markers are available in the MAC category ", k, "\n")
-      print(indexInMarkerList-1)
+      #print(indexInMarkerList-1)
     }
 
   }#end of while(ratioCV > ratioCVcutoff)
@@ -1820,11 +1820,11 @@ scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait = function(obj.glmm.null,
 } #for(k in 1:length(listOfMarkersForVarRatio)){
 
 
-  print(varRatioTable)
-  print(varRatioOutFile)
+  #print(varRatioTable)
+  #print(varRatioOutFile)
   write.table(varRatioTable, varRatioOutFile, quote=F, col.names=F, row.names=F)
   data = read.table(varRatioOutFile, header=F)
-  print(data)
+  #print(data)
 
 }
 
