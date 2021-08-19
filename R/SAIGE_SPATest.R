@@ -1615,8 +1615,8 @@ Score_Test_Sparse_Survival<-function(obj.null, G, mu, mu2, varRatio){
     noCov = TRUE 
   }
 
-  A1<-obj.null$XVX_inv_XV_fg[idx_no0,]
-  X1_fg<-obj.null$X1_fg[idx_no0,]
+  A1<-obj.null$XVX_inv_XV_fg[idx_no0,,drop=F]
+  X1_fg<-obj.null$X1_fg[idx_no0,,drop=F]
   mu21<-mu2[idx_no0]
   mu1<-mu[idx_no0]
   y1<-obj.null$y[idx_no0]
