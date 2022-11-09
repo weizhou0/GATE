@@ -1072,6 +1072,11 @@ fitNULLGLMM = function(plinkFile = "",
     #mmat_nomissing = mmat[complete.cases(mmat),]
   }
 
+    if(nrow(mmat_nomissing) == 0){
+        stop("No individuals left in the analysis. Exiting...\n")
+    }	
+
+
     mmat_nomissing$IndexPheno = seq(1,nrow(mmat_nomissing), by=1)
     cat(nrow(mmat_nomissing), " samples have non-missing phenotypes\n")
 
