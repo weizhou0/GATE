@@ -1,0 +1,80 @@
+FROM ubuntu:20.04
+
+LABEL maintainer="wzhou@broadinstitute.org"
+
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+    apt-get install curl make gcc g++ cmake gfortran libreadline-dev \
+    libz-dev libbz2-dev liblzma-dev libpcre3-dev libssl-dev libcurl4-openssl-dev \
+    libopenblas-dev default-jre unzip libboost-all-dev \
+    libpng-dev libcairo2-dev tabix --yes && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    build-essential \
+    cmake \
+    libopenblas-base \
+    python3-pip \
+    r-cran-devtools
+
+RUN pip3 install cget
+
+RUN apt install wget
+
+RUN apt-get update
+
+RUN apt-get install -y libxml2-dev
+
+ADD install_packages.R /usr/local/bin/
+
+
+RUN Rscript /usr/local/bin/install_packages.R
+
+RUN export MKL_NUM_THREADS=1
+RUN export MKL_DYNAMIC=false
+RUN export OMP_NUM_THREADS=1
+RUN export OMP_DYNAMIC=false
+
+RUN apt-get update
+RUN apt-get install -y git
+
+RUN echo "hello world8"
+ENV SRC_BRANCH main
+ENV REPO_SRC_URL https://github.com/weizhou0/GATE
+
+
+ADD install_packages_2.R /usr/local/bin/
+RUN Rscript /usr/local/bin/install_packages_2.R
+
+RUN echo "hello world8"
+RUN git clone --depth 1 -b $SRC_BRANCH $REPO_SRC_URL
+
+#RUN cp GATE/configure tmpconf && if [ $SRC_BRANCH != "master" ]; then head -n 1 tmpconf > f && tail -n +2 tmpconf |  sed -e 's/#//g' -e 's/^install.*$//g' >s && cat f s > GATE/configure; fi
+
+
+# Install R packages and GATE
+
+
+RUN apt-get install -y python2-minimal
+
+RUN ln -s /usr/bin/python2 /usr/bin/python
+RUN R CMD INSTALL GATE
+
+
+RUN mv GATE/extdata/step1_fitNULLGLMM.R GATE/extdata/step2_SPAtests.R /usr/local/bin/
+
+RUN rm -rf GATE
+
+RUN chmod a+x /usr/local/bin/step1_fitNULLGLMM.R
+RUN chmod a+x /usr/local/bin/step2_SPAtests.R
+
+RUN step1_fitNULLGLMM.R --help
+
+RUN step2_SPAtests.R --help
+
+# COPY scripts/do_condition_locus.py scripts/postscript.py scripts/generate_conditional_analysis_config.py scripts/qqplot.R /usr/local/bin/
+
+#WORKDIR /

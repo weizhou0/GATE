@@ -1,0 +1,3 @@
+docker build -t "saige.survival0.43" -f ./Docker_surv .
+docker tag saige.survival0.43 wzhou88/saige.survival:0.43
+docker push wzhou88/saige.survival:0.43
