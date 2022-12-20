@@ -92,7 +92,7 @@ option_list <- list(
     help="More options can be seen in the SKAT library"),
   make_option("--IsSingleVarinGroupTest",type="logical", default=FALSE,
     help="Whether to perform single-variant assoc tests for genetic markers included in the gene-based tests. By default, FALSE"),
-  make_option("--minMACfordosageZerod",type="numeric", default=30, help="For each variant with MAC <= minMACfordosageZerod, dosages <= dosageZerodCutoff with be set to 0. [default=10]"),		    
+  make_option("--minMACfordosageZerod",type="numeric", default=10, help="For each variant with MAC <= minMACfordosageZerod, dosages <= dosageZerodCutoff with be set to 0. [default=10]"),		    
   make_option("--cateVarRatioMinMACVecExclude",type="character", default="0.5,1.5,2.5,3.5,4.5,5.5,10.5,20.5",
     help="vector of float. Lower bound of MAC for MAC categories. The length equals to the number of MAC categories for variance ratio estimation. [default='0.5,1.5,2.5,3.5,4.5,5.5,10.5,20.5']"),
   make_option("--cateVarRatioMaxMACVecInclude",type="character", default="1.5,2.5,3.5,4.5,5.5,10.5,20.5",
