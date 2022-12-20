@@ -799,7 +799,7 @@ cat("It is a survival trait\n")
       }
 
       if(MAF >= testMinMAF & markerInfo >= minInfo){
-         numPassMarker = numPassMarker + 1
+         #numPassMarker = numPassMarker + 1
          varRatio = getVarRatio(G0, cateVarRatioMinMACVecExclude, cateVarRatioMaxMACVecInclude, ratioVec)
 
          if(indChromCheck){
@@ -853,7 +853,6 @@ cat("It is a survival trait\n")
 	if(IsOutputHetHomCountsinCaseCtrl){
 		G0round = G0round[missingind]
 	}  
-	print("check0")
         G0 = G0[missingind]
 	subsetModelResult = subsetModelFileforMissing(obj.glmm.null, missingind, mu, mu.a ,mu2.a)	
 	obj.glmm.null.sub = subsetModelResult$obj.glmm.null.sub
@@ -873,10 +872,18 @@ cat("It is a survival trait\n")
 		if(MAC_Allele2.sub <= minMACfordosageZerod){
 			G0[which(G0 < dosageZerodCutoff)] = 0
 			AC_Allele2.sub = sum(G0)	
-		}	
+		}
+		AC_Allele2.sub = sum(G0)	
 	}	
 
 	AF_Allele2.sub = AC_Allele2.sub/(2*N.sub)
+	
+	MAF.sub = min(AF_Allele2.sub, 1-AF_Allele2.sub)
+	
+	
+if(MAF.sub >= testMinMAF){
+  numPassMarker = numPassMarker + 1
+
 	if(dosageFileType == "bgen"){
 		rowHeader[7] = AC_Allele2.sub
 		rowHeader[8] = AF_Allele2.sub
@@ -943,13 +950,12 @@ cat("It is a survival trait\n")
    	  if(IsOutputHetHomCountsinCaseCtrl){
                 OUTvec=c(OUTvec, homN_Allele2_cases, hetN_Allele2_cases, homN_Allele2_ctrls, hetN_Allele2_ctrls)
 	}
-	OUT = rbind(OUT, OUTvec)
+	   OUT = rbind(OUT, OUTvec)
 	   OUTvec=NULL
 	  }else{ #if (NCase.sub == 0 | NCtrl.sub == 0) {
 		if(traitType == "binary"){
            		out1 = scoreTest_SAIGE_binaryTrait_cond_sparseSigma(G0, AC, AF, MAF, IsSparse, obj.glmm.null.sub$obj.noK, mu.a.sub, mu2.a.sub, y.sub, varRatio, Cutoff, rowHeader, sparseSigma=sparseSigma.sub, isCondition=isCondition, OUT_cond=OUT_cond.sub, G1tilde_P_G2tilde = G1tilde_P_G2tilde.sub, G2tilde_P_G2tilde_inv = G2tilde_P_G2tilde_inv.sub)
 		}else if(traitType == "survival"){
-	print("Check")
 
 			if(IsSPAfast){
 				out1 = scoreTest_SAIGE_survivalTrait_cond_sparseSigma_fast(G0, AC, AF, MAF, IsSparse, obj.glmm.null.sub$obj.noK, mu.a.sub, mu2.a.sub, y.sub, varRatio, Cutoff, rowHeader, sparseSigma=sparseSigma.sub, isCondition=isCondition, OUT_cond=OUT_cond.sub, G1tilde_P_G2tilde = G1tilde_P_G2tilde.sub, G2tilde_P_G2tilde_inv = G2tilde_P_G2tilde_inv.sub)
@@ -976,10 +982,10 @@ cat("It is a survival trait\n")
 
    	  if(IsOutputHetHomCountsinCaseCtrl){
                 OUTvec=c(OUTvec, homN_Allele2_cases, hetN_Allele2_cases, homN_Allele2_ctrls, hetN_Allele2_ctrls)
-	}
+	  }
 
 
-	OUT = rbind(OUT, OUTvec)
+	   OUT = rbind(OUT, OUTvec)
 	   OUTvec=NULL
 	  }
          }else if(traitType == "quantitative"){
@@ -992,9 +998,15 @@ cat("It is a survival trait\n")
              OUT = rbind(OUT, c(rowHeader, N.sub, out1$BETA, out1$SE, out1$Tstat, out1$p.value, out1$var1, out1$var2, out1$Tstat_c,  out1$p.value.c, out1$var1_c, out1$BETA_c, out1$SE_c))
            }
          }
-	
+
+
+
+} #if(MAF.sub >= testMinMAF){
+
+
      }else{ #if(IsDropMissingDosages & length(indexforMissing) > 0){
 	          ##conditional analysis
+
 	 if(dosageZerodCutoff > 0 & minMACfordosageZerod > 0){
                 if(MAC <= minMACfordosageZerod){
                         G0[which(G0 < dosageZerodCutoff)] = 0
@@ -1004,8 +1016,10 @@ cat("It is a survival trait\n")
 		}	
         }
 
+   
+if(MAF >= testMinMAF){
+	  numPassMarker = numPassMarker + 1
 
-    
 	 if(isCondition){
            condpre2 = getCovMandOUT_cond(G0 = G0, dosage_cond = dosage_cond, cateVarRatioMinMACVecExclude = cateVarRatioMinMACVecExclude, cateVarRatioMaxMACVecInclude = cateVarRatioMaxMACVecInclude, ratioVec = ratioVec, obj.glmm.null = obj.glmm.null, sparseSigma = sparseSigma, covM = condpre$covM, mu2.a = mu2.a)
            G1tilde_P_G2tilde = condpre2$G1tilde_P_G2tilde
@@ -1085,7 +1099,10 @@ cat("It is a survival trait\n")
              OUT = rbind(OUT, c(rowHeader, N, out1$BETA, out1$SE, out1$Tstat, out1$p.value, out1$var1, out1$var2, out1$Tstat_c,  out1$p.value.c, out1$var1_c, out1$BETA_c, out1$SE_c))
            }
          }
-  
+
+
+}#if(MAF >= testMinMAF){
+
      } #end of else{ #if(IsDropMissingDosages & length(indexforMissing) > 0){
 
 
