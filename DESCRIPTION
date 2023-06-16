@@ -1,7 +1,7 @@
-Package: SAIGE
+Package: GATE
 Type: Package
-Title: Efficiently controlling for case-control imbalance and sample relatedness in single-variant assoc tests (SAIGE) and controlling for sample relatedness in region-based assoc tests in large cohorts and biobanks (SAIGE-GENE) 
-Version: 0.44
+Title: Genetic Analysis of Time-to-Event phenotypes (GATE)
+Version: 0.44.1
 Date: 2022-12-20
 Author: Wei Zhou, Rounak Dey
 Maintainer: Wei Zhou <wzhou@broadinstitute.org>
