@@ -36,14 +36,15 @@ The docker image can be found in the docker hub **wzhou88/saige.survival:0.42.1*
 ```
 eventTimeCol = “”,
 eventTimeBinSize = 1
-```
-and 
+``` 
 
 ```
 traitType = “survival”
 ```
+
+
 eventTimeCol is the column name for the event time, e.g. age of diagnosis
-eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1 means the bin size will be 1 and if  eventTimeBinSize is not specified, raw event time values will be used
+eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1 means the bin size will be 1 and if  eventTimeBinSize is not specified, raw event time values will be used. phenoCol is for event status (0 or 1 is for censored or event) 
 
 # Logs for bug fixing
 
