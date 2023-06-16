@@ -54,4 +54,57 @@ eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1
 * 0.41 (January-11-2021) fix the error from the merging branches
 
 
+# Installation
 
+##  Install GATE using the conda environment
+
+0. Download and install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+
+1. Create a conda environment using
+
+     * conda environment file is in the SAIGE folder: [https://github.com/weizhou0/GATE/conda_env/environment-RSAIGE_v0.yml](https://github.com/weizhou0/GATE/conda_env/environment-RSAIGE_v0.yml)
+
+     * After downloading environment-RSAIGE_v0.yml, run following command
+
+     ```
+     conda env create -f environment-RSAIGE_v0.yml
+     ```
+
+2. Activate the conda environment RSAIGE_v0
+     ```
+       conda activate RSAIGE_v0
+       FLAGPATH=`which python | sed 's|/bin/python$||'`
+       export LDFLAGS="-L${FLAGPATH}/lib"
+       export CPPFLAGS="-I${FLAGPATH}/include"
+     ```
+3. Install zlib 
+
+     * download zlib and install zlin following the [link](https://geeksww.com/tutorials/libraries/zlib/installation/installing_zlib_on_ubuntu_linux.php)
+     * add the path to the zlib.h to ~/.bashrc
+     ```
+       export PATH=path_to_zlib:$PATH  
+     ```
+     * activate ~/.bashrc, you may need to log out and log in the system 
+     ```
+       source ~/.bashrc
+     ```
+
+4. Install GATE from the source code
+
+     ```
+       src_branch=main
+
+       repo_src_url=https://github.com/weizhou0/GATE
+       git clone --depth 1 -b $src_branch $repo_src_url
+       Rscript ./GATE/extdata/install_packages_v0.R
+       R CMD INSTALL --library=path_to_final_GATE_library GATE
+     ```
+
+     When call GATE in R, set lib.loc=path_to_final_GATE_library. Note that it still uses the name SAIGE. will be updated soon. 
+
+     ```
+       library(SAIGE, lib.loc=path_to_final_GATE_library)
+     ```
+
+	       
