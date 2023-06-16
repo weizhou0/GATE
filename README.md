@@ -11,7 +11,7 @@ Table of Contents
 # Introduction
 
 
-## Current version is 0.42.1
+## Current version is 0.44.1
 
 GATE (Genetic Analysis of Time-to-Event phenotypes) is an R package with Scalable and accurate genome-wide association analysis of censored survival data in large scale biobanks using frailty models. 
 
@@ -27,7 +27,7 @@ GATE is based on joint work by Rouank Dey and Wei Zhou.
 
   https://github.com/weizhouUMICH/SAIGE/wiki/Genetic-association-tests-using-SAIGE
 
-The docker image can be found in the docker hub **wzhou88/saige.survival:0.42.1**
+The docker image can be found in the docker hub **wzhou88/saige.survival:0.44.1**
 
 # Notes for users before running jobs
 * After installation, the package needs to be called as SAIGE (will update)
