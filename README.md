@@ -48,6 +48,10 @@ eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1
 
 # Logs for bug fixing
 
+* 0.44.1 (June-15-2023) changed the package name to GATE from SAIGE
+
+* 0.44.1 (December-20-2022) fixed the error X1_fg %*% Z : non-conformable argument
+
 * 0.42.1 (August-19-2021) trying to fix the error X1_fg %*% Z : non-conformable argument 
 
 * 0.42 (July-14-2021) fix the "AF > 0.5" error when input file is VCF
@@ -102,10 +106,10 @@ eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1
        R CMD INSTALL --library=path_to_final_GATE_library GATE
      ```
 
-     When call GATE in R, set lib.loc=path_to_final_GATE_library. Note that it still uses the name SAIGE. will be updated soon. 
+     When call GATE in R, set lib.loc=path_to_final_GATE_library. 
 
      ```
-       library(SAIGE, lib.loc=path_to_final_GATE_library)
+       library(GATE, lib.loc=path_to_final_GATE_library)
      ```
 
 	       
