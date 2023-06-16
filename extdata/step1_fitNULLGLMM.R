@@ -3,7 +3,7 @@
 options(stringsAsFactors=F)
 
 ## load R libraries
-library(SAIGE)
+library(GATE)
 #library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/GATE")
 require(optparse) #install.packages("optparse")
 

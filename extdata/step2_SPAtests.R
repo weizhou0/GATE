@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 options(stringsAsFactors=F)
-library(SAIGE)
+library(GATE)
 #library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/GATE")
 #library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug")
 #library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.40.2_Surv_LOCO_debug/")
