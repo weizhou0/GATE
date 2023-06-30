@@ -1123,7 +1123,6 @@ fitNULLGLMM = function(plinkFile = "",
 	dataMerge_sort = cbind(dataMerge_sort, X1[,newcol])
  } 
 
-
   if((traitType == "binary" | traitType == "survival") & (length(covarColList) > 0)){
 
     out_checksep = checkPerfectSep(formula.null, data=dataMerge_sort, minCovariateCount)
