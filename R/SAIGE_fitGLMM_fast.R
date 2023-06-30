@@ -379,6 +379,7 @@ glmmkin.ai_PCG_Rcpp_Binary = function(genofile, fit0, tau=c(0,0), fixtau = c(0,0
   }
 
   if(!is.null(eventTime)){
+
     obj.noK = ScoreTest_NULL_Model_survival(mu, y, X)
     glmmResult = list(theta=tau, coefficients=coef.alpha, linear.predictors=eta, fitted.values=mu, Y=Y, residuals=res, cov=cov, converged=converged,sampleID = subPheno$IID, obj.glm.null=fit0, obj.noK=obj.noK, traitType="survival", cov=cov, Lambda0 = Lambda0, eventTime = eventTime) 
   }else{
@@ -735,6 +736,8 @@ ScoreTest_NULL_Model_survival=function (mu, y, X1){
   XVX_inv = solve(t(X1) %*% (X1 * V))
   XXVX_inv = X1 %*% XVX_inv
 
+
+
   ###for G_tilde_c
   X1_fg = cbind(X1, 1)
   XV_fg = t(X1_fg * V)
@@ -1059,23 +1062,25 @@ fitNULLGLMM = function(plinkFile = "",
       mmat = model.frame(formula.null, data, na.action=NULL)
     }
     mmat$IID = data[,which(sampleIDColinphenoFile == colnames(data))]
-    mmat_nomissing = mmat[complete.cases(mmat),]
+    mmat_nomissing = mmat[complete.cases(mmat),, drop=F]
+
+
 
     if(eventTimeCol != ""){
       pheVec = mmat_nomissing[,which(colnames(mmat_nomissing) == phenoCol)]
       minTime = min(mmat_nomissing[which(pheVec == 1),eventTimeCol])
       rmCensor = which(pheVec == 0 & mmat_nomissing[,eventTimeCol] < minTime)
-    if(length(rmCensor) > 0){
-      mmat_nomissing = mmat_nomissing[-rmCensor,]
-      cat(length(rmCensor)," individuals that are censored before the first event is removed\n")
-    }
+      if(length(rmCensor) > 0){
+        mmat_nomissing = mmat_nomissing[-rmCensor,]
+        cat(length(rmCensor)," individuals that are censored before the first event is removed\n")
+      }
     #mmat_nomissing = mmat[complete.cases(mmat),]
-  }
+    }
 
+	    
     if(nrow(mmat_nomissing) == 0){
         stop("No individuals left in the analysis. Exiting...\n")
     }	
-
 
     mmat_nomissing$IndexPheno = seq(1,nrow(mmat_nomissing), by=1)
     cat(nrow(mmat_nomissing), " samples have non-missing phenotypes\n")
@@ -1097,13 +1102,37 @@ fitNULLGLMM = function(plinkFile = "",
   }
 
 
-  #check for perfect separation
+  X1<-model.matrix(formula.null, data=dataMerge_sort)
+  X_name = colnames(X1)
+  X1 = as.matrix(X1[,-1])
+  X_name = X_name[-1]
+  newcol = which(!(X_name %in% colnames(dataMerge_sort)))
+  if(length(newcol) > 0){
+	covarColList = X_name  
+  	formulaupdate = c(phenoCol, " ~ ", X_name[1])
+  	if(length(X_name) > 1){
+      		for(i in c(2:length(X_name))){
+		formulaupdate = c(formulaupdate, "+", X_name[i])      
+      		}
+  	}
+  	formulaupdate = paste0(formulaupdate, collapse="")
+  	if(traitType != "survival"){
+		formulaupdate = paste0(formulaupdate, "-1")  
+  	}
+  	formula.null = as.formula(paste0(formulaupdate, collapse=""))
+	dataMerge_sort = cbind(dataMerge_sort, X1[,newcol])
+ } 
+
+
   if((traitType == "binary" | traitType == "survival") & (length(covarColList) > 0)){
+
     out_checksep = checkPerfectSep(formula.null, data=dataMerge_sort, minCovariateCount)
     covarColList = covarColList[!(covarColList %in% out_checksep)]
     formula = paste0(phenoCol,"~", paste0(covarColList,collapse="+"))
     formula.null = as.formula(formula)
     dataMerge_sort = dataMerge_sort[, !(names(dataMerge_sort) %in% out_checksep)]
+
+
   }
 
   if(isCovariateTransform){
